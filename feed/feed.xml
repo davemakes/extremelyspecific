@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="pretty-atom-feed.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>Blog Title</title>
+  <subtitle>This is a longer description about your blog.</subtitle>
+  <link href="https://davemakes.com/extremelyspecific/feed/feed.xml" rel="self" />
+  <link href="https://davemakes.com/extremelyspecific/extremelyspecific" />
+  <updated>2025-04-12T00:00:00Z</updated>
+  <id>https://davemakes.com/extremelyspecific/extremelyspecific</id>
+  <author>
+    <name>Your Name</name>
+  </author>
+  <entry>
+    <title>Guitar hum/noise when plugged into ungrounded outlet in Japanese apartment</title>
+    <link href="https://davemakes.com/extremelyspecific/blog/20250412-ungrounded-guitar-hum/" />
+    <updated>2025-04-12T00:00:00Z</updated>
+    <id>https://davemakes.com/extremelyspecific/blog/20250412-ungrounded-guitar-hum/</id>
+    <content type="html">&lt;h2&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;When I plug my electric guitar into my audio interface (a Focusrite 2i2 3rd generation, although it shouldn&#39;t matter) that is attached to my laptop and apply distortion, there is a ton of hum and noise when the laptop is plugged into the wall outlet of my Japanese apartment.&lt;/p&gt;
+&lt;p&gt;The noise can be mitigated slightly by touching the metal exterior of the jack. When the laptop is unplugged and running on battery power, the problem disappears.&lt;/p&gt;
+&lt;p&gt;The problem is the same when using guitar pedals not connected to the computer at all. Battery powered pedals are no problem, but pedals drawing power from the wall introduce hum and noise.&lt;/p&gt;
+&lt;p&gt;A lot of people online will tell you this is because of a ground loop, but I don&#39;t think that&#39;s correct in this instance. Most Japanese outlets don&#39;t have a ground pin, so the problem here is that the guitar isn&#39;t grounded at all.&lt;/p&gt;
+&lt;h2&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;The solution is to run a ground wire (I connect mine to the ground connection that&#39;s part of the outlet for the aircon) and attach it to the metal exterior of the guitar cable jack. This seems to be effective no matter where in the circuit you place it, so I attach it to a jack on my overdrive pedal.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://note.com/bluewing_maru/n/n4d166a1ce636&quot;&gt;I found one Japanese person who built a dedicated &amp;quot;earthing box&amp;quot; for their pedal board.&lt;/a&gt; It&#39;s basically a pedal enclosure with an input and output jack, and inside the ground on one of the jacks is connected to an external connector for a grounding wire.&lt;/p&gt;
+&lt;h2&gt;Why It Works&lt;/h2&gt;
+&lt;p&gt;I am not an electrical engineer, but this is my understanding of what is going on: Guitars use unbalanced cables, so they don&#39;t reject external noise. The cables are shielded by a wire mesh, but that mesh doesn&#39;t work properly unless it&#39;s grounded.&lt;/p&gt;
+&lt;p&gt;When you&#39;re plugged into an ungrounded outlet in a Japanese apartment, for example, the guitar cable essentially turns into a big antenna, and picks up noise from power supplies. The noise is reduced when you touch the cable jack because you become the ground, which is a job you&#39;re not particularly well suited for and you probably shouldn&#39;t do. You need to properly ground the guitar in order to make the cable shielding effective.&lt;/p&gt;
+&lt;h2&gt;What didn&#39;t work&lt;/h2&gt;
+&lt;p&gt;Some people suggested that the problem was noisy power coming over USB, and that the solution was to buy a dongle that separates the USB data signal from the USB power supply, which you would provide via a separate wall wart. In this instance, this isn&#39;t effective at all because it doesn&#39;t address the lack of grounding in the circuit.&lt;/p&gt;
+&lt;p&gt;I saw some suggestions to buy &amp;quot;Hum Eliminator&amp;quot; devices, but they seem far more expensive and probably ineffective compared to adding a ground wire.&lt;/p&gt;
+&lt;h2&gt;Why most Japanese outlets aren&#39;t grounded&lt;/h2&gt;
+&lt;p&gt;Electricians in most countries are probably tearing their hair out at the concept of ungrounded outlets. In short, the Japanese system is different, and safety features are implemented at the circuit breaker instead. &lt;a href=&quot;https://www.youtube.com/watch?v=tqClY6PDCW0&quot;&gt;Here is an interesting video on the subject.&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Gamemaker: Transparency issues when copying application surface to new surface</title>
+    <link href="https://davemakes.com/extremelyspecific/blog/20241213-gamemaker-surface-transparency/" />
+    <updated>2024-12-13T00:00:00Z</updated>
+    <id>https://davemakes.com/extremelyspecific/blog/20241213-gamemaker-surface-transparency/</id>
+    <content type="html">&lt;h2&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;In GameMaker, transparency acts differently on the application surface than it does on other surfaces. This poses a problem if you are drawing shadows or something with transparency in your game, and then you try to copy the application surface to another surface. You might find that your shadows make the new surface transparent.&lt;/p&gt;
+&lt;h2&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;When you copy the application surface, clear it with a solid black first, then use &lt;code&gt;gpu_set_colorwriteenable&lt;/code&gt; to prevent the application surface&#39;s alpha values from being transferred.&lt;/p&gt;
+&lt;pre class=&quot;language-gml&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-gml&quot;&gt;&lt;span class=&quot;token function&quot;&gt;surface_set_target&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;surf&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;draw_clear_alpha&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;c_black&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;surface_reset_target&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;gpu_set_colorwriteenable&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;surface_copy&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;surf&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;application_surface&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;gpu_set_colorwriteenable&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
+    <title>8BitDo Ultimate 2.4g/Bluetooth Wireless Controller randomly disconnects</title>
+    <link href="https://davemakes.com/extremelyspecific/blog/20241213-8bitdo-ultimate-disconnects/" />
+    <updated>2024-12-13T00:00:00Z</updated>
+    <id>https://davemakes.com/extremelyspecific/blog/20241213-8bitdo-ultimate-disconnects/</id>
+    <content type="html">&lt;h2&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;While playing games with the 8BitDo Ultimate 2.4g/Bluetooth Wireless Controller, sometimes it randomly disconnects and reconnects, and then you get completely ruined by the Elden Ring boss you were fighting.&lt;/p&gt;
+&lt;h2&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;The little switch on the back that toggles between 2.4g and Bluetooth mode is extremely sensitive, and is prone to getting jiggled in the heat of gaming, causing the controller to try and change connection modes.&lt;/p&gt;
+&lt;p&gt;Put a piece of tape over it to keep it in place.&lt;/p&gt;
+</content>
+  </entry>
+</feed>

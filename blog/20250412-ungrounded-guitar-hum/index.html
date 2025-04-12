@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Guitar hum/noise when plugged into ungrounded outlet in Japanese apartment</title>
+		<meta name="description" content="Guitars have a lot of obnoxious hum when plugged into equipment on an ungrounded outlet, but not from battery powered devices.">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Extremely Specific">
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+		
+		<style>code[class*="language-"],
+pre[class*="language-"] {
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	color: #c3cee3;
+	background: #263238;
+	font-family: Roboto Mono, monospace;
+	font-size: 1em;
+	line-height: 1.5em;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	border-radius:3px;
+}
+
+code[class*="language-"]::-moz-selection,
+pre[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection,
+pre[class*="language-"] ::-moz-selection {
+	background: #363636;
+}
+
+code[class*="language-"]::selection,
+pre[class*="language-"]::selection,
+code[class*="language-"] ::selection,
+pre[class*="language-"] ::selection {
+	background: #363636;
+}
+
+:not(pre) > code[class*="language-"] {
+	white-space: normal;
+	border-radius: 0.2em;
+	padding: 0.1em;
+}
+
+pre[class*="language-"] {
+	overflow: auto;
+	position: relative;
+	margin: 0.5em 0;
+	padding: 1.25em 1em;
+}
+
+.language-css > code,
+.language-sass > code,
+.language-scss > code {
+	color: #fd9170;
+}
+
+[class*="language-"] .namespace {
+	opacity: 0.7;
+}
+
+.token.atrule {
+	color: #c792ea;
+}
+
+.token.attr-name {
+	color: #ffcb6b;
+}
+
+.token.attr-value {
+	color: #c3e88d;
+}
+
+.token.attribute {
+	color: #c3e88d;
+}
+
+.token.boolean {
+	color: #c792ea;
+}
+
+.token.builtin {
+	color: #ffcb6b;
+}
+
+.token.cdata {
+	color: #80cbc4;
+}
+
+.token.char {
+	color: #80cbc4;
+}
+
+.token.class {
+	color: #ffcb6b;
+}
+
+.token.class-name {
+	color: #f2ff00;
+}
+
+.token.color {
+	color: #f2ff00;
+}
+
+.token.comment {
+	color: #546e7a;
+}
+
+.token.constant {
+	color: #c792ea;
+}
+
+.token.deleted {
+	color: #f07178;
+}
+
+.token.doctype {
+	color: #546e7a;
+}
+
+.token.entity {
+	color: #f07178;
+}
+
+.token.function {
+	color: #c792ea;
+}
+
+.token.hexcode {
+	color: #f2ff00;
+}
+
+.token.id {
+	color: #c792ea;
+	font-weight: bold;
+}
+
+.token.important {
+	color: #c792ea;
+	font-weight: bold;
+}
+
+.token.inserted {
+	color: #80cbc4;
+}
+
+.token.keyword {
+	color: #c792ea;
+	font-style: italic;
+}
+
+.token.number {
+	color: #fd9170;
+}
+
+.token.operator {
+	color: #89ddff;
+}
+
+.token.prolog {
+	color: #546e7a;
+}
+
+.token.property {
+	color: #80cbc4;
+}
+
+.token.pseudo-class {
+	color: #c3e88d;
+}
+
+.token.pseudo-element {
+	color: #c3e88d;
+}
+
+.token.punctuation {
+	color: #89ddff;
+}
+
+.token.regex {
+	color: #f2ff00;
+}
+
+.token.selector {
+	color: #f07178;
+}
+
+.token.string {
+	color: #c3e88d;
+}
+
+.token.symbol {
+	color: #c792ea;
+}
+
+.token.tag {
+	color: #f07178;
+}
+
+.token.unit {
+	color: #f07178;
+}
+
+.token.url {
+	color: #fd9170;
+}
+
+.token.variable {
+	color: #f07178;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: "Merriweather", serif;
+	--font-family-monospace: "Fira Code", Courier New, Courier, monospace;
+	--font-line-height:1.8;
+}
+/* Theme colors */
+:root {
+	--color-gray-20: #dfd8c6;
+	--color-gray-50: #e5371f;
+	--color-gray-90: #3f3d45;
+
+	--background-color: #faf7ee;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #a5451e;
+	--text-color-link-active: #f15f0a;
+	--text-color-link-visited: #a5451e;
+
+	--syntax-tab-size: 2;
+}
+
+.function 
+	color:--code-function-color;}
+}
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	font-size: 18px;
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 36em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+.element-centered {
+	display:flex;
+	justify-content: center;
+}
+
+h1, h2, h3 {
+	margin-top: 2em;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: var(--font-line-height);
+}
+p code {
+	background: var(--color-gray-20);
+	padding:0 3px;
+}
+
+li {
+	line-height: var(--font-line-height);
+}
+
+a[href] {
+	color: var(--text-color-link);
+	text-decoration:none;
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 2px dotted var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 2px dotted var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+
+code {
+	border-radius:3px;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/extremelyspecific/" class="home-link">Extremely Specific</a>
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/extremelyspecific/about/">About</a></li>
+					<li class="nav-item"><a href="/extremelyspecific/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/extremelyspecific/tags/">Tags</a></li>
+					<li class="nav-item"><a href="/extremelyspecific/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+<h1>Guitar hum/noise when plugged into ungrounded outlet in Japanese apartment</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2025-04-12">12 April 2025</time></li>
+	<li><a href="/extremelyspecific/tags/guitar/" class="post-tag">guitar</a></li>
+</ul>
+
+<h2>The Problem</h2>
+<p>When I plug my electric guitar into my audio interface (a Focusrite 2i2 3rd generation, although it shouldn't matter) that is attached to my laptop and apply distortion, there is a ton of hum and noise when the laptop is plugged into the wall outlet of my Japanese apartment.</p>
+<p>The noise can be mitigated slightly by touching the metal exterior of the jack. When the laptop is unplugged and running on battery power, the problem disappears.</p>
+<p>The problem is the same when using guitar pedals not connected to the computer at all. Battery powered pedals are no problem, but pedals drawing power from the wall introduce hum and noise.</p>
+<p>A lot of people online will tell you this is because of a ground loop, but I don't think that's correct in this instance. Most Japanese outlets don't have a ground pin, so the problem here is that the guitar isn't grounded at all.</p>
+<h2>The Solution</h2>
+<p>The solution is to run a ground wire (I connect mine to the ground connection that's part of the outlet for the aircon) and attach it to the metal exterior of the guitar cable jack. This seems to be effective no matter where in the circuit you place it, so I attach it to a jack on my overdrive pedal.</p>
+<p><a href="https://note.com/bluewing_maru/n/n4d166a1ce636">I found one Japanese person who built a dedicated &quot;earthing box&quot; for their pedal board.</a> It's basically a pedal enclosure with an input and output jack, and inside the ground on one of the jacks is connected to an external connector for a grounding wire.</p>
+<h2>Why It Works</h2>
+<p>I am not an electrical engineer, but this is my understanding of what is going on: Guitars use unbalanced cables, so they don't reject external noise. The cables are shielded by a wire mesh, but that mesh doesn't work properly unless it's grounded.</p>
+<p>When you're plugged into an ungrounded outlet in a Japanese apartment, for example, the guitar cable essentially turns into a big antenna, and picks up noise from power supplies. The noise is reduced when you touch the cable jack because you become the ground, which is a job you're not particularly well suited for and you probably shouldn't do. You need to properly ground the guitar in order to make the cable shielding effective.</p>
+<h2>What didn't work</h2>
+<p>Some people suggested that the problem was noisy power coming over USB, and that the solution was to buy a dongle that separates the USB data signal from the USB power supply, which you would provide via a separate wall wart. In this instance, this isn't effective at all because it doesn't address the lack of grounding in the circuit.</p>
+<p>I saw some suggestions to buy &quot;Hum Eliminator&quot; devices, but they seem far more expensive and probably ineffective compared to adding a ground wire.</p>
+<h2>Why most Japanese outlets aren't grounded</h2>
+<p>Electricians in most countries are probably tearing their hair out at the concept of ungrounded outlets. In short, the Japanese system is different, and safety features are implemented at the circuit breaker instead. <a href="https://www.youtube.com/watch?v=tqClY6PDCW0">Here is an interesting video on the subject.</a></p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20241213-gamemaker-surface-transparency/">Gamemaker: Transparency issues when copying application surface to new surface</a></li>
+</ul>
+
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+		</footer>
+
+		<!-- This page `/blog/20250412-ungrounded-guitar-hum/` was built on 2025-04-13T01:24:33.708Z -->
+		
+	</body>
+</html>
