@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="pretty-atom-feed.xsl" type="text/xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-  <title>Blog Title</title>
-  <subtitle>This is a longer description about your blog.</subtitle>
+  <title>Extremely Specific</title>
+  <subtitle>Documenting extremely specific problems I&#39;ve encountered along with their solutions.</subtitle>
   <link href="https://davemakes.com/extremelyspecific/feed/feed.xml" rel="self" />
   <link href="https://davemakes.com/extremelyspecific/extremelyspecific" />
   <updated>2025-04-12T00:00:00Z</updated>
   <id>https://davemakes.com/extremelyspecific/extremelyspecific</id>
   <author>
-    <name>Your Name</name>
+    <name>davemakes</name>
   </author>
   <entry>
     <title>Guitar hum/noise when plugged into ungrounded outlet in Japanese apartment</title>
