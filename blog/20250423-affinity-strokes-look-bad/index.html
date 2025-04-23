@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Gamemaker: Transparency issues when copying application surface to new surface</title>
-		<meta name="description" content="Using gpu_set_colorwriteenable when copying the application surface to avoid alpha transparency weirdness.">
+		<title>Affinity Photo and Designer outer and inner strokes on vector objects allow background and fill to bleed through</title>
+		<meta name="description" content="Affinity Photo and Designer are bad at rendering inner and outer strokes. How can we work around it?">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Extremely Specific">
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -565,27 +565,25 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1>Gamemaker: Transparency issues when copying application surface to new surface</h1>
+<h1>Affinity Photo and Designer outer and inner strokes on vector objects allow background and fill to bleed through</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-12-13">13 December 2024</time></li>
-	<li><a href="/extremelyspecific/tags/gamemaker/" class="post-tag">gamemaker</a>, </li>
-	<li><a href="/extremelyspecific/tags/gamedev/" class="post-tag">gamedev</a></li>
+	<li><time datetime="2025-04-23">23 April 2025</time></li>
+	<li><a href="/extremelyspecific/tags/affinity-photo/" class="post-tag">affinity photo</a>, </li>
+	<li><a href="/extremelyspecific/tags/graphic-design/" class="post-tag">graphic design</a></li>
 </ul>
 
 <h2>The Problem</h2>
-<p>In GameMaker, transparency acts differently on the application surface than it does on other surfaces. This poses a problem if you are drawing shadows or something with transparency in your game, and then you try to copy the application surface to another surface. You might find that your shadows make the new surface transparent.</p>
-<h2>The Solution</h2>
-<p>When you copy the application surface, clear it with a solid black first, then use <code>gpu_set_colorwriteenable</code> to prevent the application surface's alpha values from being transferred.</p>
-<pre class="language-gml" tabindex="0"><code class="language-gml"><span class="token function">surface_set_target</span><span class="token punctuation">(</span>surf<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">draw_clear_alpha</span><span class="token punctuation">(</span><span class="token constant">c_black</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">surface_reset_target</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>In Affinity Photo and Designer (both versions 1 and 2), when you apply an outer or inner stroke to a circle, a rounded rectangle, or any vector object that isn't a level rectangle, bits of the background or fill will show through.</p>
+<p><img src="/extremelyspecific/assets/affinity-circles/affinity-bad-circles.webp" alt="Poor rendering of inner and outer strokes in Affinity Photo 2"></p>
+<p>This happens because the program is drawing the edges of the two vector elements right next to each other and then rendering/anti-aliasing them in what I would call a naive way. Other applications like Figma will compensate for this issue by silently expanding and contracting the fill geometry under the hood to avoid these ugly artifacts.</p>
+<p>Unfortunately, this has been a known issue with Affinity software for nearly a decade, and I don't believe they will ever fix it.</p>
+<h2>The Hack</h2>
+<p>Inner and outer strokes render poorly, but under the Layer Effects menu, the outline effect can be aligned to the outside or inside and looks good. It's harder to edit because you have to open up a large pop-up panel that can't be docked in order to edit the size or color of an outline, but at least it renders properly.</p>
+<p><img src="/extremelyspecific/assets/affinity-circles/affinity-good-circles.webp" alt="Good rendering of inner and outer outlines in Affinity Photo 2">
+<img src="/extremelyspecific/assets/affinity-circles/affinity-layer-effects.webp" alt="Outlines in the layer effects panel of Affinity Photo 2"></p>
 
-<span class="token function">gpu_set_colorwriteenable</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">surface_copy</span><span class="token punctuation">(</span>surf<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token variable">application_surface</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">gpu_set_colorwriteenable</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20241213-8bitdo-ultimate-disconnects/">8BitDo Ultimate 2.4g/Bluetooth Wireless Controller randomly disconnects</a></li><li class="links-nextprev-next">Next →<br><a href="/extremelyspecific/blog/20250412-ungrounded-guitar-hum/">Guitar hum/noise when plugged into ungrounded outlet in Japanese apartment</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20250412-ungrounded-guitar-hum/">Guitar hum/noise when plugged into ungrounded outlet in Japanese apartment</a></li>
 </ul>
 
 			</heading-anchors>
@@ -595,7 +593,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/20241213-gamemaker-surface-transparency/` was built on 2025-04-23T01:42:45.600Z -->
+		<!-- This page `/blog/20250423-affinity-strokes-look-bad/` was built on 2025-04-23T01:42:45.600Z -->
 		
 	</body>
 </html>

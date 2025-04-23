@@ -5,11 +5,27 @@
   <subtitle>Documenting extremely specific problems I&#39;ve encountered along with their solutions.</subtitle>
   <link href="https://davemakes.com/extremelyspecific/feed/feed.xml" rel="self" />
   <link href="https://davemakes.com/extremelyspecific/extremelyspecific" />
-  <updated>2025-04-12T00:00:00Z</updated>
+  <updated>2025-04-23T00:00:00Z</updated>
   <id>https://davemakes.com/extremelyspecific/extremelyspecific</id>
   <author>
     <name>davemakes</name>
   </author>
+  <entry>
+    <title>Affinity Photo and Designer outer and inner strokes on vector objects allow background and fill to bleed through</title>
+    <link href="https://davemakes.com/extremelyspecific/blog/20250423-affinity-strokes-look-bad/" />
+    <updated>2025-04-23T00:00:00Z</updated>
+    <id>https://davemakes.com/extremelyspecific/blog/20250423-affinity-strokes-look-bad/</id>
+    <content type="html">&lt;h2&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;In Affinity Photo and Designer (both versions 1 and 2), when you apply an outer or inner stroke to a circle, a rounded rectangle, or any vector object that isn&#39;t a level rectangle, bits of the background or fill will show through.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/assets/affinity-circles/affinity-bad-circles.webp&quot; alt=&quot;Poor rendering of inner and outer strokes in Affinity Photo 2&quot;&gt;&lt;/p&gt;
+&lt;p&gt;This happens because the program is drawing the edges of the two vector elements right next to each other and then rendering/anti-aliasing them in what I would call a naive way. Other applications like Figma will compensate for this issue by silently expanding and contracting the fill geometry under the hood to avoid these ugly artifacts.&lt;/p&gt;
+&lt;p&gt;Unfortunately, this has been a known issue with Affinity software for nearly a decade, and I don&#39;t believe they will ever fix it.&lt;/p&gt;
+&lt;h2&gt;The Hack&lt;/h2&gt;
+&lt;p&gt;Inner and outer strokes render poorly, but under the Layer Effects menu, the outline effect can be aligned to the outside or inside and looks good. It&#39;s harder to edit because you have to open up a large pop-up panel that can&#39;t be docked in order to edit the size or color of an outline, but at least it renders properly.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/assets/affinity-circles/affinity-good-circles.webp&quot; alt=&quot;Good rendering of inner and outer outlines in Affinity Photo 2&quot;&gt;
+&lt;img src=&quot;https://davemakes.com/extremelyspecific/assets/affinity-circles/affinity-layer-effects.webp&quot; alt=&quot;Outlines in the layer effects panel of Affinity Photo 2&quot;&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Guitar hum/noise when plugged into ungrounded outlet in Japanese apartment</title>
     <link href="https://davemakes.com/extremelyspecific/blog/20250412-ungrounded-guitar-hum/" />
