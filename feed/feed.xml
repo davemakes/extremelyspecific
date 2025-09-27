@@ -5,23 +5,117 @@
   <subtitle>Documenting extremely specific problems I&#39;ve encountered along with their solutions.</subtitle>
   <link href="https://davemakes.com/extremelyspecific/feed/feed.xml" rel="self" />
   <link href="https://davemakes.com/extremelyspecific/extremelyspecific" />
-  <updated>2025-04-23T00:00:00Z</updated>
+  <updated>2025-09-27T00:00:00Z</updated>
   <id>https://davemakes.com/extremelyspecific/extremelyspecific</id>
   <author>
     <name>davemakes</name>
   </author>
+  <entry>
+    <title>Advice on running a game jam</title>
+    <link href="https://davemakes.com/extremelyspecific/blog/20250927-running-a-game-jam/" />
+    <updated>2025-09-27T00:00:00Z</updated>
+    <id>https://davemakes.com/extremelyspecific/blog/20250927-running-a-game-jam/</id>
+    <content type="html">&lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/assets/falling-block-jam.webp&quot; alt=&quot;Falling Block Jam page on Itch.io&quot;&gt;&lt;/p&gt;
+&lt;h2&gt;Falling Block Jam&lt;/h2&gt;
+&lt;p&gt;This month, I ran a game jam on Itch.io called &lt;a href=&quot;https://itch.io/jam/falling-block-jam&quot;&gt;Falling Block Jam&lt;/a&gt;. I expected a few friends to join, but unexpectedly over 1200 people signed up and the event was one of Itch’s top featured jams of September.&lt;/p&gt;
+&lt;p&gt;I had never hosted an online jam of this size before and I was not prepared for some of the issues and conflicts that resulted from so much attention. There is plenty of advice out there for how to participate in a jam, but not a lot on how to run one, so I’m documenting the things I learned for my future self and anyone else who wants to run a game jam.&lt;/p&gt;
+&lt;h2&gt;Why rules are important&lt;/h2&gt;
+&lt;p&gt;I started this jam with the intent of being very cool and relaxed about it. “I am not a cop” was my motto. I was not prepared for how many people would try to take advantage of this. At the start I was trying to be the cool dad, and by the end I felt like kindergarten cop.&lt;/p&gt;
+&lt;p&gt;It turns out game jams on Itch have a spam problem. As the host, it’s important to act as a sort of curator so that the actual participants’ work isn’t drowned out by unrelated slop. Unfortunately, there are also people who are not acting maliciously, but because they don’t share your understanding of what the event is supposed to be, are contributing projects that are very difficult to discern from spam.&lt;/p&gt;
+&lt;p&gt;The host has to set down a reasonably firm set of rules to point to and say, “What you are trying to contribute does not fit with what we are doing here.” If the host doesn’t do a good job of this, legitimate participants will be anxious about whether they are doing it right, and overbold participants will do whatever they want.&lt;/p&gt;
+&lt;h2&gt;Define what a game jam is&lt;/h2&gt;
+&lt;p&gt;You would think a person signing up for a game jam would have a basic understanding of what a game jam is, but this is not the case. If you spend all your time with industry veterans, you might not realize that a decent number of participants are going to be kids who have never heard of a game jam before and are learning how it’s done from you. They might think it’s acceptable to submit a game they made months ago that vaguely relates to the jam’s theme. If you kick them out for not following rules that you didn’t define, you are going to feel like a jerk. Try to keep in mind how young and inexperienced many participants will be, and recognize that you have some responsibility to educate.&lt;/p&gt;
+&lt;p&gt;Here is my basic definition:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A game jam is an event where developers make an entire game during a limited period of time.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;From there, you will want to pre-emptively answer the following questions from participants:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;How closely do I have to follow the theme of the jam?&lt;/li&gt;
+&lt;li&gt;Can I come up with ideas before the jam starts?&lt;/li&gt;
+&lt;li&gt;Can I submit a project I began before the jam starts?&lt;/li&gt;
+&lt;li&gt;Can I submit a project I finished before the jam starts?&lt;/li&gt;
+&lt;li&gt;Can I update and submit a new version of a game I already made?&lt;/li&gt;
+&lt;li&gt;Can I work with a team?&lt;/li&gt;
+&lt;li&gt;Can I work on more than one game, or on more than one team?&lt;/li&gt;
+&lt;li&gt;Can I submit my game to more than one jam?&lt;/li&gt;
+&lt;li&gt;Is this a competitive jam? Are entries rated? Are there prizes?&lt;/li&gt;
+&lt;li&gt;What game engines are allowed?&lt;/li&gt;
+&lt;li&gt;What kind of files are accepted? Do games have to be playable in the browser? Can I submit a set of rules for a tabletop game?&lt;/li&gt;
+&lt;li&gt;Is NSFW (18+) content allowed?&lt;/li&gt;
+&lt;li&gt;Can I use pre-existing assets and code?&lt;/li&gt;
+&lt;li&gt;Can I use references while writing code? Can I use search engines to find code examples?&lt;/li&gt;
+&lt;li&gt;Can I use AI generated assets? Can I write code using AI assistance?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Explain how to submit a game&lt;/h2&gt;
+&lt;p&gt;Itch’s submission process may seem obvious to you, but it may be a complete mystery to a newcomer. Briefly outline the submission process and encourage people to set up a project page to submit well before the deadline so that they aren’t running into snags at the last minute.&lt;/p&gt;
+&lt;p&gt;This should also help after the jam ends to reduce the number of people who missed the deadline. Itch allows you to accept late submissions, but the process is very manual, so setting up participants for success will save you some effort later.&lt;/p&gt;
+&lt;p&gt;Be prepared to hang out for a while after the jam helping people get their late entries submitted.&lt;/p&gt;
+&lt;h2&gt;Build in rules to defend against inevitable spam&lt;/h2&gt;
+&lt;p&gt;Itch allows jam participants to submit a project that was published at any time. This means that you will see obvious spam from people who try to get visibility for their game by submitting it to every single game jam, even though it was completed long before the start date and has nothing to do with the theme. You will also see submissions from people who made a game years ago that happens to fit the theme, and they might simply not understand the concept of a game jam is to make a new game during the event.&lt;/p&gt;
+&lt;p&gt;I highly suggest you include a rule on your jam page that goes something like:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Projects published before the start of the jam may be disqualified. The point of a game jam is to make the game during the specified time period.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You will have to manually investigate every entry to make sure it was published after the jam started. It sucks, but that’s the host’s job until Itch implements some kind of filter for this.&lt;/p&gt;
+&lt;p&gt;Here are a few suggested rules to help you identify spam:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Project descriptions must include the phrase “Made for &lt;em&gt;JAM NAME&lt;/em&gt;”&lt;/li&gt;
+&lt;li&gt;Project pages must include a GIF or video of gameplay&lt;/li&gt;
+&lt;li&gt;Projects that are a single &lt;code&gt;.APK&lt;/code&gt; file will be disqualified&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You will be surprised at how many entries will be some kind of shady APK file or mysterious executable with no screenshots or description. Asking users to actually show screenshots/GIFs/videos of the game on the page will give you a good excuse to eject these suspicious entries without the headache of trying to run potential viruses yourself.&lt;/p&gt;
+&lt;p&gt;You don’t &lt;em&gt;have&lt;/em&gt; to disqualify every game that fails to follow these rules, but it will help to have a rule to point to when a submission is clearly over the line.&lt;/p&gt;
+&lt;h2&gt;Hide submissions before the jam ends&lt;/h2&gt;
+&lt;p&gt;Itch has a checkbox on the “Edit Jam” page called &lt;em&gt;Hide submissions before end.&lt;/em&gt; You should check this box.&lt;/p&gt;
+&lt;p&gt;The first thing that will happen when submissions open on your jam is a flood of spam. You should not allow these scumbags the attention they’re seeking. Keep them hidden and deal with them on your own schedule instead of trying to play a 24-hour game of whack-a-mole.&lt;/p&gt;
+&lt;h2&gt;Itch’s moderation tools&lt;/h2&gt;
+&lt;p&gt;Dealing with spam on Itch is a convoluted process. Here’s what I’ve figured out.&lt;/p&gt;
+&lt;p&gt;Clicking on an entry will open its Jam Submission page. This page has some details about the entry, a link to the project page, a dedicated comment section that’s useful for communicating with the participant, and a series of similar-sounding moderation options with no explanation for what they do.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Edit this submission:&lt;/strong&gt; This is intended for the project’s author and will lead you to an error page. I have no idea why it’s there.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Disqualify submission:&lt;/strong&gt; This will mark the game as &lt;em&gt;disqualified,&lt;/em&gt; which means it will no longer appear in the submissions tab, but it will strangely still appear in the submission feed tab. You can requalify submissions if you want later, so this is helpful if it’s unclear whether a game is spam or not. I believe the author is alerted of their qualification status, and they might get very angry at you if you do this. Pointing to a specific rule is helpful here.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Remove this submission:&lt;/strong&gt; This will eject the game from the jam entirely, but the author will be free to enter it again if they want. I have no idea what this is good for.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Report submission:&lt;/strong&gt; This is what you want to use to report spam to yourself. It will open a dialog box where you can select a reason and write a little note on why you’re flagging it. I believe this is not a report to Itch’s moderation team, but rather the moderation team of the jam, which is you.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;From here, it’s helpful to open the game’s actual page in a new tab, scroll down, expand &lt;em&gt;More Information,&lt;/em&gt; and see if the game was published before the start of the jam.&lt;/p&gt;
+&lt;p&gt;Once you have reported spam entries to yourself, head over to the “Edit Jam” page and under the “Moderate” menu, select “Reports.” Here you will see a list of pending reports. There is a dropdown menu with these options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Dismiss:&lt;/strong&gt; Do nothing with this report and clear it from the pending list.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dismiss and Disqualify:&lt;/strong&gt; Same action as the disqualify button from the previous page.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dismiss and Ban Account:&lt;/strong&gt; This is how you deal with spam. The game will be removed from the jam without a trace and the account that submitted it will be unable to participate any longer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you find yourself trying to ban a spammer via the account’s community profile page, be warned that a &lt;strong&gt;block&lt;/strong&gt; is NOT the same as a &lt;strong&gt;ban&lt;/strong&gt;, and will only make that account’s activities invisible to you, but will not stop them from spamming the jam, so I don’t recommend using the block function for this purpose.&lt;/p&gt;
+&lt;h2&gt;Community&lt;/h2&gt;
+&lt;p&gt;Itch provides a community forum for your jam. People will use this to organize teams and ask questions of you. Hopefully this guide will help you answer more questions up front than I did, but many people will miss very basic information on the jam page, so you will probably have to reiterate the rules.&lt;/p&gt;
+&lt;p&gt;Take extra care in answering questions in the forum. People will ask for reasonable extra accommodation, and then others will look to your response as permission for unreasonable actions. When you interact with participants, remember your duty as the host and curator of the event, and try to answer in a way that won’t undermine the rules. You might want to be the cool dad to create a relaxed atmosphere, but ambiguity won’t help anyone.&lt;/p&gt;
+&lt;p&gt;Some people will request a space to organize and chat outside of Itch, most likely on Discord. I didn’t go that route because I didn’t want an additional community to moderate. Someone else set one up, and whatever people talked about in there was, delightfully, Not My Problem.&lt;/p&gt;
+&lt;h2&gt;Sponsorships&lt;/h2&gt;
+&lt;p&gt;If your jam reaches a certain size, organizations come out of the woodwork offering sponsorships in return for promoting some game development related business. I turned down or ignored all of these, so I can’t speak to what that process is like.&lt;/p&gt;
+&lt;h2&gt;Participating in your own jam&lt;/h2&gt;
+&lt;p&gt;You might underestimate the work it will take to run the jam, as well as the emotional drain that comes from sifting through AI slop, weird suspicious entries, and well-meaning but rule breaking games from first timers. Depending on your own level of social media visibility, you probably want to boost other people’s posts about their jam progress online, which will take a certain amount of time and attention.&lt;/p&gt;
+&lt;p&gt;If you had started the jam in the hopes of being able to participate in it, you probably won’t have as much time as everyone else due to your responsibilities. My advice is to focus on being a good host, and don’t worry if you aren’t able to finish a decent entry yourself. Your real measure of success here is whether everyone else had fun.&lt;/p&gt;
+&lt;h2&gt;That’s it!&lt;/h2&gt;
+&lt;p&gt;I hope this advice proves helpful to someone out there. I also hope I haven’t made it sound too daunting, because it really was a fun and rewarding thing. Even though I was pretty spent by the end of it, seeing all the &lt;a href=&quot;https://itch.io/jam/falling-block-jam/entries&quot;&gt;incredible falling block jam entries&lt;/a&gt; made me feel like it was my birthday.&lt;/p&gt;
+&lt;p&gt;Game jams are an essential community-building element of the indie games scene overall, and despite the weight of the responsibility, hosting a reasonably sized one is a great honor and joy.&lt;/p&gt;
+&lt;p&gt;So good luck, and have fun!&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Affinity Photo and Designer outer and inner strokes on vector objects allow background and fill to bleed through</title>
     <link href="https://davemakes.com/extremelyspecific/blog/20250423-affinity-strokes-look-bad/" />
     <updated>2025-04-23T00:00:00Z</updated>
     <id>https://davemakes.com/extremelyspecific/blog/20250423-affinity-strokes-look-bad/</id>
     <content type="html">&lt;h2&gt;The Problem&lt;/h2&gt;
-&lt;p&gt;In Affinity Photo and Designer (both versions 1 and 2), when you apply an outer or inner stroke to a circle, a rounded rectangle, or any vector object that isn&#39;t a level rectangle, bits of the background or fill will show through.&lt;/p&gt;
+&lt;p&gt;In Affinity Photo and Designer (both versions 1 and 2), when you apply an outer or inner stroke to a circle, a rounded rectangle, or any vector object that isn’t a level rectangle, bits of the background or fill will show through.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/assets/affinity-circles/affinity-bad-circles.webp&quot; alt=&quot;Poor rendering of inner and outer strokes in Affinity Photo 2&quot;&gt;&lt;/p&gt;
 &lt;p&gt;This happens because the program is drawing the edges of the two vector elements right next to each other and then rendering/anti-aliasing them in what I would call a naive way. Other applications like Figma will compensate for this issue by silently expanding and contracting the fill geometry under the hood to avoid these ugly artifacts.&lt;/p&gt;
-&lt;p&gt;Unfortunately, this has been a known issue with Affinity software for nearly a decade, and I don&#39;t believe they will ever fix it.&lt;/p&gt;
+&lt;p&gt;Unfortunately, this has been a known issue with Affinity software for nearly a decade, and I don’t believe they will ever fix it.&lt;/p&gt;
 &lt;h2&gt;The Hack&lt;/h2&gt;
-&lt;p&gt;Inner and outer strokes render poorly, but under the Layer Effects menu, the outline effect can be aligned to the outside or inside and looks good. It&#39;s harder to edit because you have to open up a large pop-up panel that can&#39;t be docked in order to edit the size or color of an outline, but at least it renders properly.&lt;/p&gt;
+&lt;p&gt;Inner and outer strokes render poorly, but under the Layer Effects menu, the outline effect can be aligned to the outside or inside and looks good.&lt;/p&gt;
+&lt;p&gt;It’s harder to edit because you have to open up a large pop-up panel that can’t be docked in order to edit the size or color of an outline, but at least it renders properly.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/assets/affinity-circles/affinity-good-circles.webp&quot; alt=&quot;Good rendering of inner and outer outlines in Affinity Photo 2&quot;&gt;
 &lt;img src=&quot;https://davemakes.com/extremelyspecific/assets/affinity-circles/affinity-layer-effects.webp&quot; alt=&quot;Outlines in the layer effects panel of Affinity Photo 2&quot;&gt;&lt;/p&gt;
 </content>
@@ -32,20 +126,20 @@
     <updated>2025-04-12T00:00:00Z</updated>
     <id>https://davemakes.com/extremelyspecific/blog/20250412-ungrounded-guitar-hum/</id>
     <content type="html">&lt;h2&gt;The Problem&lt;/h2&gt;
-&lt;p&gt;When I plug my electric guitar into my audio interface (a Focusrite 2i2 3rd generation, although it shouldn&#39;t matter) that is attached to my laptop and apply distortion, there is a ton of hum and noise when the laptop is plugged into the wall outlet of my Japanese apartment.&lt;/p&gt;
+&lt;p&gt;When I plug my electric guitar into my audio interface (a Focusrite 2i2 3rd generation, although it shouldn’t matter) that is attached to my laptop and apply distortion, there is a ton of hum and noise when the laptop is plugged into the wall outlet of my Japanese apartment.&lt;/p&gt;
 &lt;p&gt;The noise can be mitigated slightly by touching the metal exterior of the jack. When the laptop is unplugged and running on battery power, the problem disappears.&lt;/p&gt;
 &lt;p&gt;The problem is the same when using guitar pedals not connected to the computer at all. Battery powered pedals are no problem, but pedals drawing power from the wall introduce hum and noise.&lt;/p&gt;
-&lt;p&gt;A lot of people online will tell you this is because of a ground loop, but I don&#39;t think that&#39;s correct in this instance. Most Japanese outlets don&#39;t have a ground pin, so the problem here is that the guitar isn&#39;t grounded at all.&lt;/p&gt;
+&lt;p&gt;A lot of people online will tell you this is because of a ground loop, but I don’t think that’s correct in this instance. Most Japanese outlets don’t have a ground pin, so the problem here is that the guitar isn’t grounded at all.&lt;/p&gt;
 &lt;h2&gt;The Solution&lt;/h2&gt;
-&lt;p&gt;The solution is to run a ground wire (I connect mine to the ground connection that&#39;s part of the outlet for the aircon) and attach it to the metal exterior of the guitar cable jack. This seems to be effective no matter where in the circuit you place it, so I attach it to a jack on my overdrive pedal.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://note.com/bluewing_maru/n/n4d166a1ce636&quot;&gt;I found one Japanese person who built a dedicated &amp;quot;earthing box&amp;quot; for their pedal board.&lt;/a&gt; It&#39;s basically a pedal enclosure with an input and output jack, and inside the ground on one of the jacks is connected to an external connector for a grounding wire.&lt;/p&gt;
+&lt;p&gt;The solution is to run a ground wire (I connect mine to the ground connection that’s part of the outlet for the aircon) and attach it to the metal exterior of the guitar cable jack. This seems to be effective no matter where in the circuit you place it, so I attach it to a jack on my overdrive pedal.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://note.com/bluewing_maru/n/n4d166a1ce636&quot;&gt;I found one Japanese person who built a dedicated “earthing box” for their pedal board.&lt;/a&gt; It’s basically a pedal enclosure with an input and output jack, and inside the ground on one of the jacks is connected to an external connector for a grounding wire.&lt;/p&gt;
 &lt;h2&gt;Why It Works&lt;/h2&gt;
-&lt;p&gt;I am not an electrical engineer, but this is my understanding of what is going on: Guitars use unbalanced cables, so they don&#39;t reject external noise. The cables are shielded by a wire mesh, but that mesh doesn&#39;t work properly unless it&#39;s grounded.&lt;/p&gt;
-&lt;p&gt;When you&#39;re plugged into an ungrounded outlet in a Japanese apartment, for example, the guitar cable essentially turns into a big antenna, and picks up noise from power supplies. The noise is reduced when you touch the cable jack because you become the ground, which is a job you&#39;re not particularly well suited for and you probably shouldn&#39;t do. You need to properly ground the guitar in order to make the cable shielding effective.&lt;/p&gt;
-&lt;h2&gt;What didn&#39;t work&lt;/h2&gt;
-&lt;p&gt;Some people suggested that the problem was noisy power coming over USB, and that the solution was to buy a dongle that separates the USB data signal from the USB power supply, which you would provide via a separate wall wart. In this instance, this isn&#39;t effective at all because it doesn&#39;t address the lack of grounding in the circuit.&lt;/p&gt;
-&lt;p&gt;I saw some suggestions to buy &amp;quot;Hum Eliminator&amp;quot; devices, but they seem far more expensive and probably ineffective compared to adding a ground wire.&lt;/p&gt;
-&lt;h2&gt;Why most Japanese outlets aren&#39;t grounded&lt;/h2&gt;
+&lt;p&gt;I am not an electrical engineer, but this is my understanding of what is going on: Guitars use unbalanced cables, so they don’t reject external noise. The cables are shielded by a wire mesh, but that mesh doesn’t work properly unless it’s grounded.&lt;/p&gt;
+&lt;p&gt;When you’re plugged into an ungrounded outlet in a Japanese apartment, for example, the guitar cable essentially turns into a big antenna, and picks up noise from power supplies. The noise is reduced when you touch the cable jack because you become the ground, which is a job you’re not particularly well suited for and you probably shouldn’t do. You need to properly ground the guitar in order to make the cable shielding effective.&lt;/p&gt;
+&lt;h2&gt;What didn’t work&lt;/h2&gt;
+&lt;p&gt;Some people suggested that the problem was noisy power coming over USB, and that the solution was to buy a dongle that separates the USB data signal from the USB power supply, which you would provide via a separate wall wart. In this instance, this isn’t effective at all because it doesn’t address the lack of grounding in the circuit.&lt;/p&gt;
+&lt;p&gt;I saw some suggestions to buy “Hum Eliminator” devices, but they seem far more expensive and probably ineffective compared to adding a ground wire.&lt;/p&gt;
+&lt;h2&gt;Why most Japanese outlets aren’t grounded&lt;/h2&gt;
 &lt;p&gt;Electricians in most countries are probably tearing their hair out at the concept of ungrounded outlets. In short, the Japanese system is different, and safety features are implemented at the circuit breaker instead. &lt;a href=&quot;https://www.youtube.com/watch?v=tqClY6PDCW0&quot;&gt;Here is an interesting video on the subject.&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
@@ -57,7 +151,7 @@
     <content type="html">&lt;h2&gt;The Problem&lt;/h2&gt;
 &lt;p&gt;In GameMaker, transparency acts differently on the application surface than it does on other surfaces. This poses a problem if you are drawing shadows or something with transparency in your game, and then you try to copy the application surface to another surface. You might find that your shadows make the new surface transparent.&lt;/p&gt;
 &lt;h2&gt;The Solution&lt;/h2&gt;
-&lt;p&gt;When you copy the application surface, clear it with a solid black first, then use &lt;code&gt;gpu_set_colorwriteenable&lt;/code&gt; to prevent the application surface&#39;s alpha values from being transferred.&lt;/p&gt;
+&lt;p&gt;When you copy the application surface, clear it with a solid black first, then use &lt;code&gt;gpu_set_colorwriteenable&lt;/code&gt; to prevent the application surface’s alpha values from being transferred.&lt;/p&gt;
 &lt;pre class=&quot;language-gml&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-gml&quot;&gt;&lt;span class=&quot;token function&quot;&gt;surface_set_target&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;surf&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token function&quot;&gt;draw_clear_alpha&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;c_black&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token function&quot;&gt;surface_reset_target&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;

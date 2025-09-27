@@ -395,6 +395,14 @@ header:after {
 	clear: both;
 }
 
+blockquote {
+	border-left: 4px solid var(--color-gray-50);
+	background-color: var(--color-gray-20);
+	margin: 0;
+	padding: 1em 2em;
+	font-style: italic;
+}
+
 .links-nextprev {
 	display: flex;
 	justify-content: space-between;
@@ -482,7 +490,6 @@ header {
 .postlist {
 	list-style: none;
 	padding: 0;
-	padding-left: 1.5rem;
 }
 .postlist-item {
 	display: flex;
@@ -490,14 +497,6 @@ header {
 	align-items: baseline;
 	counter-increment: start-from -1;
 	margin-bottom: 1em;
-}
-.postlist-item:before {
-	display: inline-block;
-	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
-	line-height: 100%;
-	text-align: right;
-	margin-left: -1.5rem;
 }
 .postlist-date,
 .postlist-item:before {
@@ -511,7 +510,6 @@ header {
 	font-size: 1.1875em; /* 19px /16 */
 	font-weight: 700;
 	flex-basis: calc(100% - 1.5rem);
-	padding-left: .25em;
 	padding-right: .5em;
 	text-underline-position: from-font;
 	text-underline-offset: 0;
@@ -573,20 +571,20 @@ header {
 </ul>
 
 <h2>The Problem</h2>
-<p>When I plug my electric guitar into my audio interface (a Focusrite 2i2 3rd generation, although it shouldn't matter) that is attached to my laptop and apply distortion, there is a ton of hum and noise when the laptop is plugged into the wall outlet of my Japanese apartment.</p>
+<p>When I plug my electric guitar into my audio interface (a Focusrite 2i2 3rd generation, although it shouldn’t matter) that is attached to my laptop and apply distortion, there is a ton of hum and noise when the laptop is plugged into the wall outlet of my Japanese apartment.</p>
 <p>The noise can be mitigated slightly by touching the metal exterior of the jack. When the laptop is unplugged and running on battery power, the problem disappears.</p>
 <p>The problem is the same when using guitar pedals not connected to the computer at all. Battery powered pedals are no problem, but pedals drawing power from the wall introduce hum and noise.</p>
-<p>A lot of people online will tell you this is because of a ground loop, but I don't think that's correct in this instance. Most Japanese outlets don't have a ground pin, so the problem here is that the guitar isn't grounded at all.</p>
+<p>A lot of people online will tell you this is because of a ground loop, but I don’t think that’s correct in this instance. Most Japanese outlets don’t have a ground pin, so the problem here is that the guitar isn’t grounded at all.</p>
 <h2>The Solution</h2>
-<p>The solution is to run a ground wire (I connect mine to the ground connection that's part of the outlet for the aircon) and attach it to the metal exterior of the guitar cable jack. This seems to be effective no matter where in the circuit you place it, so I attach it to a jack on my overdrive pedal.</p>
-<p><a href="https://note.com/bluewing_maru/n/n4d166a1ce636">I found one Japanese person who built a dedicated &quot;earthing box&quot; for their pedal board.</a> It's basically a pedal enclosure with an input and output jack, and inside the ground on one of the jacks is connected to an external connector for a grounding wire.</p>
+<p>The solution is to run a ground wire (I connect mine to the ground connection that’s part of the outlet for the aircon) and attach it to the metal exterior of the guitar cable jack. This seems to be effective no matter where in the circuit you place it, so I attach it to a jack on my overdrive pedal.</p>
+<p><a href="https://note.com/bluewing_maru/n/n4d166a1ce636">I found one Japanese person who built a dedicated “earthing box” for their pedal board.</a> It’s basically a pedal enclosure with an input and output jack, and inside the ground on one of the jacks is connected to an external connector for a grounding wire.</p>
 <h2>Why It Works</h2>
-<p>I am not an electrical engineer, but this is my understanding of what is going on: Guitars use unbalanced cables, so they don't reject external noise. The cables are shielded by a wire mesh, but that mesh doesn't work properly unless it's grounded.</p>
-<p>When you're plugged into an ungrounded outlet in a Japanese apartment, for example, the guitar cable essentially turns into a big antenna, and picks up noise from power supplies. The noise is reduced when you touch the cable jack because you become the ground, which is a job you're not particularly well suited for and you probably shouldn't do. You need to properly ground the guitar in order to make the cable shielding effective.</p>
-<h2>What didn't work</h2>
-<p>Some people suggested that the problem was noisy power coming over USB, and that the solution was to buy a dongle that separates the USB data signal from the USB power supply, which you would provide via a separate wall wart. In this instance, this isn't effective at all because it doesn't address the lack of grounding in the circuit.</p>
-<p>I saw some suggestions to buy &quot;Hum Eliminator&quot; devices, but they seem far more expensive and probably ineffective compared to adding a ground wire.</p>
-<h2>Why most Japanese outlets aren't grounded</h2>
+<p>I am not an electrical engineer, but this is my understanding of what is going on: Guitars use unbalanced cables, so they don’t reject external noise. The cables are shielded by a wire mesh, but that mesh doesn’t work properly unless it’s grounded.</p>
+<p>When you’re plugged into an ungrounded outlet in a Japanese apartment, for example, the guitar cable essentially turns into a big antenna, and picks up noise from power supplies. The noise is reduced when you touch the cable jack because you become the ground, which is a job you’re not particularly well suited for and you probably shouldn’t do. You need to properly ground the guitar in order to make the cable shielding effective.</p>
+<h2>What didn’t work</h2>
+<p>Some people suggested that the problem was noisy power coming over USB, and that the solution was to buy a dongle that separates the USB data signal from the USB power supply, which you would provide via a separate wall wart. In this instance, this isn’t effective at all because it doesn’t address the lack of grounding in the circuit.</p>
+<p>I saw some suggestions to buy “Hum Eliminator” devices, but they seem far more expensive and probably ineffective compared to adding a ground wire.</p>
+<h2>Why most Japanese outlets aren’t grounded</h2>
 <p>Electricians in most countries are probably tearing their hair out at the concept of ungrounded outlets. In short, the Japanese system is different, and safety features are implemented at the circuit breaker instead. <a href="https://www.youtube.com/watch?v=tqClY6PDCW0">Here is an interesting video on the subject.</a></p>
 
 <ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20241213-gamemaker-surface-transparency/">Gamemaker: Transparency issues when copying application surface to new surface</a></li><li class="links-nextprev-next">Next →<br><a href="/extremelyspecific/blog/20250423-affinity-strokes-look-bad/">Affinity Photo and Designer outer and inner strokes on vector objects allow background and fill to bleed through</a></li>
@@ -599,7 +597,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/20250412-ungrounded-guitar-hum/` was built on 2025-04-23T01:42:45.600Z -->
+		<!-- This page `/blog/20250412-ungrounded-guitar-hum/` was built on 2025-09-27T04:49:35.220Z -->
 		
 	</body>
 </html>

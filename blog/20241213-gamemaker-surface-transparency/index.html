@@ -395,6 +395,14 @@ header:after {
 	clear: both;
 }
 
+blockquote {
+	border-left: 4px solid var(--color-gray-50);
+	background-color: var(--color-gray-20);
+	margin: 0;
+	padding: 1em 2em;
+	font-style: italic;
+}
+
 .links-nextprev {
 	display: flex;
 	justify-content: space-between;
@@ -482,7 +490,6 @@ header {
 .postlist {
 	list-style: none;
 	padding: 0;
-	padding-left: 1.5rem;
 }
 .postlist-item {
 	display: flex;
@@ -490,14 +497,6 @@ header {
 	align-items: baseline;
 	counter-increment: start-from -1;
 	margin-bottom: 1em;
-}
-.postlist-item:before {
-	display: inline-block;
-	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
-	line-height: 100%;
-	text-align: right;
-	margin-left: -1.5rem;
 }
 .postlist-date,
 .postlist-item:before {
@@ -511,7 +510,6 @@ header {
 	font-size: 1.1875em; /* 19px /16 */
 	font-weight: 700;
 	flex-basis: calc(100% - 1.5rem);
-	padding-left: .25em;
 	padding-right: .5em;
 	text-underline-position: from-font;
 	text-underline-offset: 0;
@@ -576,7 +574,7 @@ header {
 <h2>The Problem</h2>
 <p>In GameMaker, transparency acts differently on the application surface than it does on other surfaces. This poses a problem if you are drawing shadows or something with transparency in your game, and then you try to copy the application surface to another surface. You might find that your shadows make the new surface transparent.</p>
 <h2>The Solution</h2>
-<p>When you copy the application surface, clear it with a solid black first, then use <code>gpu_set_colorwriteenable</code> to prevent the application surface's alpha values from being transferred.</p>
+<p>When you copy the application surface, clear it with a solid black first, then use <code>gpu_set_colorwriteenable</code> to prevent the application surface’s alpha values from being transferred.</p>
 <pre class="language-gml" tabindex="0"><code class="language-gml"><span class="token function">surface_set_target</span><span class="token punctuation">(</span>surf<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">draw_clear_alpha</span><span class="token punctuation">(</span><span class="token constant">c_black</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">surface_reset_target</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -595,7 +593,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/20241213-gamemaker-surface-transparency/` was built on 2025-04-23T01:42:45.600Z -->
+		<!-- This page `/blog/20241213-gamemaker-surface-transparency/` was built on 2025-09-27T04:49:35.220Z -->
 		
 	</body>
 </html>

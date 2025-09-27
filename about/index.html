@@ -139,6 +139,14 @@ header:after {
 	clear: both;
 }
 
+blockquote {
+	border-left: 4px solid var(--color-gray-50);
+	background-color: var(--color-gray-20);
+	margin: 0;
+	padding: 1em 2em;
+	font-style: italic;
+}
+
 .links-nextprev {
 	display: flex;
 	justify-content: space-between;
@@ -226,7 +234,6 @@ header {
 .postlist {
 	list-style: none;
 	padding: 0;
-	padding-left: 1.5rem;
 }
 .postlist-item {
 	display: flex;
@@ -234,14 +241,6 @@ header {
 	align-items: baseline;
 	counter-increment: start-from -1;
 	margin-bottom: 1em;
-}
-.postlist-item:before {
-	display: inline-block;
-	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
-	line-height: 100%;
-	text-align: right;
-	margin-left: -1.5rem;
 }
 .postlist-date,
 .postlist-item:before {
@@ -255,7 +254,6 @@ header {
 	font-size: 1.1875em; /* 19px /16 */
 	font-weight: 700;
 	flex-basis: calc(100% - 1.5rem);
-	padding-left: .25em;
 	padding-right: .5em;
 	text-underline-position: from-font;
 	text-underline-offset: 0;
@@ -310,9 +308,9 @@ header {
 			<heading-anchors>
 				
 <h1>About</h1>
-<p>My name is Dave, I'm an independent game developer.</p>
-<p>You know how sometimes you have an extremely specific problem, and after a bunch of digging, you find a solution in an ancient forum? And usually it's buried under 20 posts by people being jerks? Or maybe somebody gives you the answer on discord, where nobody will ever be able to find it again? Or maybe you just figured out the answer yourself, forgot to write it down, and then ran into the same problem five years later and forgot what you did?</p>
-<p>Well, instead of cursing the darkness, I've decided to start documenting these little problems and the solutions I've found here. I hope somebody finds it useful someday.</p>
+<p>My name is Dave, I’m an independent game developer.</p>
+<p>You know how sometimes you have an extremely specific problem, and after a bunch of digging, you find a solution in an ancient forum? And usually it’s buried under 20 posts by people being jerks? Or maybe somebody gives you the answer on discord, where nobody will ever be able to find it again? Or maybe you just figured out the answer yourself, forgot to write it down, and then ran into the same problem five years later and forgot what you did?</p>
+<p>Well, instead of cursing the darkness, I’ve decided to start documenting these little problems and the solutions I’ve found here. I hope somebody finds it useful someday.</p>
 
 
 			</heading-anchors>
@@ -322,7 +320,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/about/` was built on 2025-04-23T01:42:45.599Z -->
+		<!-- This page `/about/` was built on 2025-09-27T04:49:35.221Z -->
 		
 	</body>
 </html>

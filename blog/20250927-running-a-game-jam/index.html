@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Advice on running a game jam</title>
+		<meta name="description" content="Things I learned from hosting Falling Block Jam">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Extremely Specific">
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+		
+		<style>code[class*="language-"],
+pre[class*="language-"] {
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	color: #c3cee3;
+	background: #263238;
+	font-family: Roboto Mono, monospace;
+	font-size: 1em;
+	line-height: 1.5em;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	border-radius:3px;
+}
+
+code[class*="language-"]::-moz-selection,
+pre[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection,
+pre[class*="language-"] ::-moz-selection {
+	background: #363636;
+}
+
+code[class*="language-"]::selection,
+pre[class*="language-"]::selection,
+code[class*="language-"] ::selection,
+pre[class*="language-"] ::selection {
+	background: #363636;
+}
+
+:not(pre) > code[class*="language-"] {
+	white-space: normal;
+	border-radius: 0.2em;
+	padding: 0.1em;
+}
+
+pre[class*="language-"] {
+	overflow: auto;
+	position: relative;
+	margin: 0.5em 0;
+	padding: 1.25em 1em;
+}
+
+.language-css > code,
+.language-sass > code,
+.language-scss > code {
+	color: #fd9170;
+}
+
+[class*="language-"] .namespace {
+	opacity: 0.7;
+}
+
+.token.atrule {
+	color: #c792ea;
+}
+
+.token.attr-name {
+	color: #ffcb6b;
+}
+
+.token.attr-value {
+	color: #c3e88d;
+}
+
+.token.attribute {
+	color: #c3e88d;
+}
+
+.token.boolean {
+	color: #c792ea;
+}
+
+.token.builtin {
+	color: #ffcb6b;
+}
+
+.token.cdata {
+	color: #80cbc4;
+}
+
+.token.char {
+	color: #80cbc4;
+}
+
+.token.class {
+	color: #ffcb6b;
+}
+
+.token.class-name {
+	color: #f2ff00;
+}
+
+.token.color {
+	color: #f2ff00;
+}
+
+.token.comment {
+	color: #546e7a;
+}
+
+.token.constant {
+	color: #c792ea;
+}
+
+.token.deleted {
+	color: #f07178;
+}
+
+.token.doctype {
+	color: #546e7a;
+}
+
+.token.entity {
+	color: #f07178;
+}
+
+.token.function {
+	color: #c792ea;
+}
+
+.token.hexcode {
+	color: #f2ff00;
+}
+
+.token.id {
+	color: #c792ea;
+	font-weight: bold;
+}
+
+.token.important {
+	color: #c792ea;
+	font-weight: bold;
+}
+
+.token.inserted {
+	color: #80cbc4;
+}
+
+.token.keyword {
+	color: #c792ea;
+	font-style: italic;
+}
+
+.token.number {
+	color: #fd9170;
+}
+
+.token.operator {
+	color: #89ddff;
+}
+
+.token.prolog {
+	color: #546e7a;
+}
+
+.token.property {
+	color: #80cbc4;
+}
+
+.token.pseudo-class {
+	color: #c3e88d;
+}
+
+.token.pseudo-element {
+	color: #c3e88d;
+}
+
+.token.punctuation {
+	color: #89ddff;
+}
+
+.token.regex {
+	color: #f2ff00;
+}
+
+.token.selector {
+	color: #f07178;
+}
+
+.token.string {
+	color: #c3e88d;
+}
+
+.token.symbol {
+	color: #c792ea;
+}
+
+.token.tag {
+	color: #f07178;
+}
+
+.token.unit {
+	color: #f07178;
+}
+
+.token.url {
+	color: #fd9170;
+}
+
+.token.variable {
+	color: #f07178;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: "Merriweather", serif;
+	--font-family-monospace: "Fira Code", Courier New, Courier, monospace;
+	--font-line-height:1.8;
+}
+/* Theme colors */
+:root {
+	--color-gray-20: #dfd8c6;
+	--color-gray-50: #e5371f;
+	--color-gray-90: #3f3d45;
+
+	--background-color: #faf7ee;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #a5451e;
+	--text-color-link-active: #f15f0a;
+	--text-color-link-visited: #a5451e;
+
+	--syntax-tab-size: 2;
+}
+
+.function 
+	color:--code-function-color;}
+}
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	font-size: 18px;
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 36em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+.element-centered {
+	display:flex;
+	justify-content: center;
+}
+
+h1, h2, h3 {
+	margin-top: 2em;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: var(--font-line-height);
+}
+p code {
+	background: var(--color-gray-20);
+	padding:0 3px;
+}
+
+li {
+	line-height: var(--font-line-height);
+}
+
+a[href] {
+	color: var(--text-color-link);
+	text-decoration:none;
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 2px dotted var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+blockquote {
+	border-left: 4px solid var(--color-gray-50);
+	background-color: var(--color-gray-20);
+	margin: 0;
+	padding: 1em 2em;
+	font-style: italic;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 2px dotted var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+
+code {
+	border-radius:3px;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/extremelyspecific/" class="home-link">Extremely Specific</a>
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/extremelyspecific/about/">About</a></li>
+					<li class="nav-item"><a href="/extremelyspecific/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/extremelyspecific/tags/">Tags</a></li>
+					<li class="nav-item"><a href="/extremelyspecific/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+<h1>Advice on running a game jam</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2025-09-27">27 September 2025</time></li>
+	<li><a href="/extremelyspecific/tags/itch/" class="post-tag">itch</a>, </li>
+	<li><a href="/extremelyspecific/tags/long/" class="post-tag">long</a></li>
+</ul>
+
+<p><img src="/extremelyspecific/assets/falling-block-jam.webp" alt="Falling Block Jam page on Itch.io"></p>
+<h2>Falling Block Jam</h2>
+<p>This month, I ran a game jam on Itch.io called <a href="https://itch.io/jam/falling-block-jam">Falling Block Jam</a>. I expected a few friends to join, but unexpectedly over 1200 people signed up and the event was one of Itch’s top featured jams of September.</p>
+<p>I had never hosted an online jam of this size before and I was not prepared for some of the issues and conflicts that resulted from so much attention. There is plenty of advice out there for how to participate in a jam, but not a lot on how to run one, so I’m documenting the things I learned for my future self and anyone else who wants to run a game jam.</p>
+<h2>Why rules are important</h2>
+<p>I started this jam with the intent of being very cool and relaxed about it. “I am not a cop” was my motto. I was not prepared for how many people would try to take advantage of this. At the start I was trying to be the cool dad, and by the end I felt like kindergarten cop.</p>
+<p>It turns out game jams on Itch have a spam problem. As the host, it’s important to act as a sort of curator so that the actual participants’ work isn’t drowned out by unrelated slop. Unfortunately, there are also people who are not acting maliciously, but because they don’t share your understanding of what the event is supposed to be, are contributing projects that are very difficult to discern from spam.</p>
+<p>The host has to set down a reasonably firm set of rules to point to and say, “What you are trying to contribute does not fit with what we are doing here.” If the host doesn’t do a good job of this, legitimate participants will be anxious about whether they are doing it right, and overbold participants will do whatever they want.</p>
+<h2>Define what a game jam is</h2>
+<p>You would think a person signing up for a game jam would have a basic understanding of what a game jam is, but this is not the case. If you spend all your time with industry veterans, you might not realize that a decent number of participants are going to be kids who have never heard of a game jam before and are learning how it’s done from you. They might think it’s acceptable to submit a game they made months ago that vaguely relates to the jam’s theme. If you kick them out for not following rules that you didn’t define, you are going to feel like a jerk. Try to keep in mind how young and inexperienced many participants will be, and recognize that you have some responsibility to educate.</p>
+<p>Here is my basic definition:</p>
+<blockquote>
+<p>A game jam is an event where developers make an entire game during a limited period of time.</p>
+</blockquote>
+<p>From there, you will want to pre-emptively answer the following questions from participants:</p>
+<ul>
+<li>How closely do I have to follow the theme of the jam?</li>
+<li>Can I come up with ideas before the jam starts?</li>
+<li>Can I submit a project I began before the jam starts?</li>
+<li>Can I submit a project I finished before the jam starts?</li>
+<li>Can I update and submit a new version of a game I already made?</li>
+<li>Can I work with a team?</li>
+<li>Can I work on more than one game, or on more than one team?</li>
+<li>Can I submit my game to more than one jam?</li>
+<li>Is this a competitive jam? Are entries rated? Are there prizes?</li>
+<li>What game engines are allowed?</li>
+<li>What kind of files are accepted? Do games have to be playable in the browser? Can I submit a set of rules for a tabletop game?</li>
+<li>Is NSFW (18+) content allowed?</li>
+<li>Can I use pre-existing assets and code?</li>
+<li>Can I use references while writing code? Can I use search engines to find code examples?</li>
+<li>Can I use AI generated assets? Can I write code using AI assistance?</li>
+</ul>
+<h2>Explain how to submit a game</h2>
+<p>Itch’s submission process may seem obvious to you, but it may be a complete mystery to a newcomer. Briefly outline the submission process and encourage people to set up a project page to submit well before the deadline so that they aren’t running into snags at the last minute.</p>
+<p>This should also help after the jam ends to reduce the number of people who missed the deadline. Itch allows you to accept late submissions, but the process is very manual, so setting up participants for success will save you some effort later.</p>
+<p>Be prepared to hang out for a while after the jam helping people get their late entries submitted.</p>
+<h2>Build in rules to defend against inevitable spam</h2>
+<p>Itch allows jam participants to submit a project that was published at any time. This means that you will see obvious spam from people who try to get visibility for their game by submitting it to every single game jam, even though it was completed long before the start date and has nothing to do with the theme. You will also see submissions from people who made a game years ago that happens to fit the theme, and they might simply not understand the concept of a game jam is to make a new game during the event.</p>
+<p>I highly suggest you include a rule on your jam page that goes something like:</p>
+<blockquote>
+<p>Projects published before the start of the jam may be disqualified. The point of a game jam is to make the game during the specified time period.</p>
+</blockquote>
+<p>You will have to manually investigate every entry to make sure it was published after the jam started. It sucks, but that’s the host’s job until Itch implements some kind of filter for this.</p>
+<p>Here are a few suggested rules to help you identify spam:</p>
+<blockquote>
+<ul>
+<li>Project descriptions must include the phrase “Made for <em>JAM NAME</em>”</li>
+<li>Project pages must include a GIF or video of gameplay</li>
+<li>Projects that are a single <code>.APK</code> file will be disqualified</li>
+</ul>
+</blockquote>
+<p>You will be surprised at how many entries will be some kind of shady APK file or mysterious executable with no screenshots or description. Asking users to actually show screenshots/GIFs/videos of the game on the page will give you a good excuse to eject these suspicious entries without the headache of trying to run potential viruses yourself.</p>
+<p>You don’t <em>have</em> to disqualify every game that fails to follow these rules, but it will help to have a rule to point to when a submission is clearly over the line.</p>
+<h2>Hide submissions before the jam ends</h2>
+<p>Itch has a checkbox on the “Edit Jam” page called <em>Hide submissions before end.</em> You should check this box.</p>
+<p>The first thing that will happen when submissions open on your jam is a flood of spam. You should not allow these scumbags the attention they’re seeking. Keep them hidden and deal with them on your own schedule instead of trying to play a 24-hour game of whack-a-mole.</p>
+<h2>Itch’s moderation tools</h2>
+<p>Dealing with spam on Itch is a convoluted process. Here’s what I’ve figured out.</p>
+<p>Clicking on an entry will open its Jam Submission page. This page has some details about the entry, a link to the project page, a dedicated comment section that’s useful for communicating with the participant, and a series of similar-sounding moderation options with no explanation for what they do.</p>
+<ol>
+<li><strong>Edit this submission:</strong> This is intended for the project’s author and will lead you to an error page. I have no idea why it’s there.</li>
+<li><strong>Disqualify submission:</strong> This will mark the game as <em>disqualified,</em> which means it will no longer appear in the submissions tab, but it will strangely still appear in the submission feed tab. You can requalify submissions if you want later, so this is helpful if it’s unclear whether a game is spam or not. I believe the author is alerted of their qualification status, and they might get very angry at you if you do this. Pointing to a specific rule is helpful here.</li>
+<li><strong>Remove this submission:</strong> This will eject the game from the jam entirely, but the author will be free to enter it again if they want. I have no idea what this is good for.</li>
+<li><strong>Report submission:</strong> This is what you want to use to report spam to yourself. It will open a dialog box where you can select a reason and write a little note on why you’re flagging it. I believe this is not a report to Itch’s moderation team, but rather the moderation team of the jam, which is you.</li>
+</ol>
+<p>From here, it’s helpful to open the game’s actual page in a new tab, scroll down, expand <em>More Information,</em> and see if the game was published before the start of the jam.</p>
+<p>Once you have reported spam entries to yourself, head over to the “Edit Jam” page and under the “Moderate” menu, select “Reports.” Here you will see a list of pending reports. There is a dropdown menu with these options:</p>
+<ul>
+<li><strong>Dismiss:</strong> Do nothing with this report and clear it from the pending list.</li>
+<li><strong>Dismiss and Disqualify:</strong> Same action as the disqualify button from the previous page.</li>
+<li><strong>Dismiss and Ban Account:</strong> This is how you deal with spam. The game will be removed from the jam without a trace and the account that submitted it will be unable to participate any longer.</li>
+</ul>
+<p>If you find yourself trying to ban a spammer via the account’s community profile page, be warned that a <strong>block</strong> is NOT the same as a <strong>ban</strong>, and will only make that account’s activities invisible to you, but will not stop them from spamming the jam, so I don’t recommend using the block function for this purpose.</p>
+<h2>Community</h2>
+<p>Itch provides a community forum for your jam. People will use this to organize teams and ask questions of you. Hopefully this guide will help you answer more questions up front than I did, but many people will miss very basic information on the jam page, so you will probably have to reiterate the rules.</p>
+<p>Take extra care in answering questions in the forum. People will ask for reasonable extra accommodation, and then others will look to your response as permission for unreasonable actions. When you interact with participants, remember your duty as the host and curator of the event, and try to answer in a way that won’t undermine the rules. You might want to be the cool dad to create a relaxed atmosphere, but ambiguity won’t help anyone.</p>
+<p>Some people will request a space to organize and chat outside of Itch, most likely on Discord. I didn’t go that route because I didn’t want an additional community to moderate. Someone else set one up, and whatever people talked about in there was, delightfully, Not My Problem.</p>
+<h2>Sponsorships</h2>
+<p>If your jam reaches a certain size, organizations come out of the woodwork offering sponsorships in return for promoting some game development related business. I turned down or ignored all of these, so I can’t speak to what that process is like.</p>
+<h2>Participating in your own jam</h2>
+<p>You might underestimate the work it will take to run the jam, as well as the emotional drain that comes from sifting through AI slop, weird suspicious entries, and well-meaning but rule breaking games from first timers. Depending on your own level of social media visibility, you probably want to boost other people’s posts about their jam progress online, which will take a certain amount of time and attention.</p>
+<p>If you had started the jam in the hopes of being able to participate in it, you probably won’t have as much time as everyone else due to your responsibilities. My advice is to focus on being a good host, and don’t worry if you aren’t able to finish a decent entry yourself. Your real measure of success here is whether everyone else had fun.</p>
+<h2>That’s it!</h2>
+<p>I hope this advice proves helpful to someone out there. I also hope I haven’t made it sound too daunting, because it really was a fun and rewarding thing. Even though I was pretty spent by the end of it, seeing all the <a href="https://itch.io/jam/falling-block-jam/entries">incredible falling block jam entries</a> made me feel like it was my birthday.</p>
+<p>Game jams are an essential community-building element of the indie games scene overall, and despite the weight of the responsibility, hosting a reasonably sized one is a great honor and joy.</p>
+<p>So good luck, and have fun!</p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20250423-affinity-strokes-look-bad/">Affinity Photo and Designer outer and inner strokes on vector objects allow background and fill to bleed through</a></li>
+</ul>
+
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+		</footer>
+
+		<!-- This page `/blog/20250927-running-a-game-jam/` was built on 2025-09-27T04:49:35.221Z -->
+		
+	</body>
+</html>

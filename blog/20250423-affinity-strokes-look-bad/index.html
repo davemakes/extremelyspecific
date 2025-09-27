@@ -395,6 +395,14 @@ header:after {
 	clear: both;
 }
 
+blockquote {
+	border-left: 4px solid var(--color-gray-50);
+	background-color: var(--color-gray-20);
+	margin: 0;
+	padding: 1em 2em;
+	font-style: italic;
+}
+
 .links-nextprev {
 	display: flex;
 	justify-content: space-between;
@@ -482,7 +490,6 @@ header {
 .postlist {
 	list-style: none;
 	padding: 0;
-	padding-left: 1.5rem;
 }
 .postlist-item {
 	display: flex;
@@ -490,14 +497,6 @@ header {
 	align-items: baseline;
 	counter-increment: start-from -1;
 	margin-bottom: 1em;
-}
-.postlist-item:before {
-	display: inline-block;
-	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
-	line-height: 100%;
-	text-align: right;
-	margin-left: -1.5rem;
 }
 .postlist-date,
 .postlist-item:before {
@@ -511,7 +510,6 @@ header {
 	font-size: 1.1875em; /* 19px /16 */
 	font-weight: 700;
 	flex-basis: calc(100% - 1.5rem);
-	padding-left: .25em;
 	padding-right: .5em;
 	text-underline-position: from-font;
 	text-underline-offset: 0;
@@ -574,16 +572,17 @@ header {
 </ul>
 
 <h2>The Problem</h2>
-<p>In Affinity Photo and Designer (both versions 1 and 2), when you apply an outer or inner stroke to a circle, a rounded rectangle, or any vector object that isn't a level rectangle, bits of the background or fill will show through.</p>
+<p>In Affinity Photo and Designer (both versions 1 and 2), when you apply an outer or inner stroke to a circle, a rounded rectangle, or any vector object that isn’t a level rectangle, bits of the background or fill will show through.</p>
 <p><img src="/extremelyspecific/assets/affinity-circles/affinity-bad-circles.webp" alt="Poor rendering of inner and outer strokes in Affinity Photo 2"></p>
 <p>This happens because the program is drawing the edges of the two vector elements right next to each other and then rendering/anti-aliasing them in what I would call a naive way. Other applications like Figma will compensate for this issue by silently expanding and contracting the fill geometry under the hood to avoid these ugly artifacts.</p>
-<p>Unfortunately, this has been a known issue with Affinity software for nearly a decade, and I don't believe they will ever fix it.</p>
+<p>Unfortunately, this has been a known issue with Affinity software for nearly a decade, and I don’t believe they will ever fix it.</p>
 <h2>The Hack</h2>
-<p>Inner and outer strokes render poorly, but under the Layer Effects menu, the outline effect can be aligned to the outside or inside and looks good. It's harder to edit because you have to open up a large pop-up panel that can't be docked in order to edit the size or color of an outline, but at least it renders properly.</p>
+<p>Inner and outer strokes render poorly, but under the Layer Effects menu, the outline effect can be aligned to the outside or inside and looks good.</p>
+<p>It’s harder to edit because you have to open up a large pop-up panel that can’t be docked in order to edit the size or color of an outline, but at least it renders properly.</p>
 <p><img src="/extremelyspecific/assets/affinity-circles/affinity-good-circles.webp" alt="Good rendering of inner and outer outlines in Affinity Photo 2">
 <img src="/extremelyspecific/assets/affinity-circles/affinity-layer-effects.webp" alt="Outlines in the layer effects panel of Affinity Photo 2"></p>
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20250412-ungrounded-guitar-hum/">Guitar hum/noise when plugged into ungrounded outlet in Japanese apartment</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20250412-ungrounded-guitar-hum/">Guitar hum/noise when plugged into ungrounded outlet in Japanese apartment</a></li><li class="links-nextprev-next">Next →<br><a href="/extremelyspecific/blog/20250927-running-a-game-jam/">Advice on running a game jam</a></li>
 </ul>
 
 			</heading-anchors>
@@ -593,7 +592,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/20250423-affinity-strokes-look-bad/` was built on 2025-04-23T01:42:45.600Z -->
+		<!-- This page `/blog/20250423-affinity-strokes-look-bad/` was built on 2025-09-27T04:49:35.221Z -->
 		
 	</body>
 </html>
