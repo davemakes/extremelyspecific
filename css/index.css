@@ -159,6 +159,7 @@ table th {
 pre,
 code {
 	font-family: var(--font-family-monospace);
+	max-width:100%;
 }
 pre:not([class*="language-"]) {
 	margin: .5em 0;
@@ -273,3 +274,7 @@ header {
 	margin-right: 1em;
 }
 
+.link-badges {
+	display:flex;
+	align-content: space-between;
+}
