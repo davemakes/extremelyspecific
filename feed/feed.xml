@@ -5,11 +5,35 @@
   <subtitle>Documenting extremely specific problems I&#39;ve encountered along with their solutions.</subtitle>
   <link href="https://davemakes.com/extremelyspecific/feed/feed.xml" rel="self" />
   <link href="https://davemakes.com/extremelyspecific/extremelyspecific" />
-  <updated>2025-09-27T00:00:00Z</updated>
+  <updated>2026-06-09T00:00:00Z</updated>
   <id>https://davemakes.com/extremelyspecific/extremelyspecific</id>
   <author>
     <name>davemakes</name>
   </author>
+  <entry>
+    <title>Big numbers in Pico-8</title>
+    <link href="https://davemakes.com/extremelyspecific/blog/20250609-big-numbers-in-pico-8/" />
+    <updated>2026-06-09T00:00:00Z</updated>
+    <id>https://davemakes.com/extremelyspecific/blog/20250609-big-numbers-in-pico-8/</id>
+    <content type="html">&lt;h2&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;In the fantasy console &lt;a href=&quot;https://www.lexaloffle.com/pico-8.php&quot;&gt;Pico-8&lt;/a&gt;, all numbers by default are 16:16 fixed point, which means if your player’s score goes above &lt;strong&gt;32,767&lt;/strong&gt;, the number will wrap around into the negative.&lt;/p&gt;
+&lt;h2&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;There are a lot of suggested hacks around this, but &lt;a href=&quot;https://www.lexaloffle.com/bbs/?tid=44512&quot;&gt;since version 0.2.3&lt;/a&gt;, support for using 32-bit signed integers allows for a maximum value of &lt;strong&gt;2,147,483,647&lt;/strong&gt; before you run into problems. You just need to change the way you handle your score variables.&lt;/p&gt;
+&lt;p&gt;When you want to add or subtract points, you have to bit shift the number to the right 16 bits.&lt;/p&gt;
+&lt;pre class=&quot;language-lua&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-lua&quot;&gt;points &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;100&lt;/span&gt;
+score &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; points&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;16&lt;/span&gt;
+
+damage &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;20&lt;/span&gt;
+score &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; damage&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;16&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And then when you want to actually show the users score, you add the &lt;code&gt;0x2&lt;/code&gt; format flag argument to the &lt;code&gt;tostr()&lt;/code&gt; function so that it knows to read the bits correctly.&lt;/p&gt;
+&lt;pre class=&quot;language-lua&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-lua&quot;&gt;&lt;span class=&quot;token function&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;tostr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;score&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0x2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Additional notes&lt;/h2&gt;
+&lt;p&gt;There’s a couple of gotchas with this. Multiplication by whole numbers should work fine, you don’t need to bit shift to do that. Same with division, but remember that you don’t have any decimals because you’re working with integers now, so fractions get rounded off.&lt;/p&gt;
+&lt;p&gt;You also can’t write something like &lt;code&gt;score += 1000000&amp;gt;&amp;gt;16&lt;/code&gt; because internally that million gets processed as a decimal and is subject to the size limit before it gets bit shifted. One way to get around that is to use the &lt;code&gt;tonum()&lt;/code&gt; function to turn a string into a 32-bit signed int with the same format flag we used before.&lt;/p&gt;
+&lt;pre class=&quot;language-lua&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-lua&quot;&gt;score &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;tonum&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;1000000&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0x2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;tostr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;score&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0x2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
   <entry>
     <title>Advice on running a game jam</title>
     <link href="https://davemakes.com/extremelyspecific/blog/20250927-running-a-game-jam/" />

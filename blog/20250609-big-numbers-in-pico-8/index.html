@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Affinity Photo and Designer outer and inner strokes on vector objects allow background and fill to bleed through</title>
-		<meta name="description" content="Affinity Photo and Designer are bad at rendering inner and outer strokes. How can we work around it?">
+		<title>Big numbers in Pico-8</title>
+		<meta name="description" content="How to store scores bigger than 32,767">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Extremely Specific">
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -569,26 +569,33 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1>Affinity Photo and Designer outer and inner strokes on vector objects allow background and fill to bleed through</h1>
+<h1>Big numbers in Pico-8</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2025-04-23">23 April 2025</time></li>
-	<li><a href="/extremelyspecific/tags/affinity-photo/" class="post-tag">affinity photo</a>, </li>
-	<li><a href="/extremelyspecific/tags/graphic-design/" class="post-tag">graphic design</a></li>
+	<li><time datetime="2026-06-09">09 June 2026</time></li>
+	<li><a href="/extremelyspecific/tags/pico-8/" class="post-tag">pico-8</a>, </li>
+	<li><a href="/extremelyspecific/tags/gamedev/" class="post-tag">gamedev</a></li>
 </ul>
 
 <h2>The Problem</h2>
-<p>In Affinity Photo and Designer (both versions 1 and 2), when you apply an outer or inner stroke to a circle, a rounded rectangle, or any vector object that isn’t a level rectangle, bits of the background or fill will show through.</p>
-<p><img src="/extremelyspecific/assets/affinity-circles/affinity-bad-circles.webp" alt="Poor rendering of inner and outer strokes in Affinity Photo 2"></p>
-<p>This happens because the program is drawing the edges of the two vector elements right next to each other and then rendering/anti-aliasing them in what I would call a naive way. Other applications like Figma will compensate for this issue by silently expanding and contracting the fill geometry under the hood to avoid these ugly artifacts.</p>
-<p>Unfortunately, this has been a known issue with Affinity software for nearly a decade, and I don’t believe they will ever fix it.</p>
-<h2>The Hack</h2>
-<p>Inner and outer strokes render poorly, but under the Layer Effects menu, the outline effect can be aligned to the outside or inside and looks good.</p>
-<p>It’s harder to edit because you have to open up a large pop-up panel that can’t be docked in order to edit the size or color of an outline, but at least it renders properly.</p>
-<p><img src="/extremelyspecific/assets/affinity-circles/affinity-good-circles.webp" alt="Good rendering of inner and outer outlines in Affinity Photo 2">
-<img src="/extremelyspecific/assets/affinity-circles/affinity-layer-effects.webp" alt="Outlines in the layer effects panel of Affinity Photo 2"></p>
+<p>In the fantasy console <a href="https://www.lexaloffle.com/pico-8.php">Pico-8</a>, all numbers by default are 16:16 fixed point, which means if your player’s score goes above <strong>32,767</strong>, the number will wrap around into the negative.</p>
+<h2>The Solution</h2>
+<p>There are a lot of suggested hacks around this, but <a href="https://www.lexaloffle.com/bbs/?tid=44512">since version 0.2.3</a>, support for using 32-bit signed integers allows for a maximum value of <strong>2,147,483,647</strong> before you run into problems. You just need to change the way you handle your score variables.</p>
+<p>When you want to add or subtract points, you have to bit shift the number to the right 16 bits.</p>
+<pre class="language-lua" tabindex="0"><code class="language-lua">points <span class="token operator">=</span> <span class="token number">100</span>
+score <span class="token operator">+</span><span class="token operator">=</span> points<span class="token operator">>></span><span class="token number">16</span>
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20250412-ungrounded-guitar-hum/">Guitar hum/noise when plugged into ungrounded outlet in Japanese apartment</a></li><li class="links-nextprev-next">Next →<br><a href="/extremelyspecific/blog/20250927-running-a-game-jam/">Advice on running a game jam</a></li>
+damage <span class="token operator">=</span> <span class="token number">20</span>
+score <span class="token operator">-</span><span class="token operator">=</span> damage<span class="token operator">>></span><span class="token number">16</span></code></pre>
+<p>And then when you want to actually show the users score, you add the <code>0x2</code> format flag argument to the <code>tostr()</code> function so that it knows to read the bits correctly.</p>
+<pre class="language-lua" tabindex="0"><code class="language-lua"><span class="token function">print</span><span class="token punctuation">(</span><span class="token function">tostr</span><span class="token punctuation">(</span>score<span class="token punctuation">,</span> <span class="token number">0x2</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h2>Additional notes</h2>
+<p>There’s a couple of gotchas with this. Multiplication by whole numbers should work fine, you don’t need to bit shift to do that. Same with division, but remember that you don’t have any decimals because you’re working with integers now, so fractions get rounded off.</p>
+<p>You also can’t write something like <code>score += 1000000&gt;&gt;16</code> because internally that million gets processed as a decimal and is subject to the size limit before it gets bit shifted. One way to get around that is to use the <code>tonum()</code> function to turn a string into a 32-bit signed int with the same format flag we used before.</p>
+<pre class="language-lua" tabindex="0"><code class="language-lua">score <span class="token operator">+</span><span class="token operator">=</span> <span class="token function">tonum</span><span class="token punctuation">(</span><span class="token string">"1000000"</span><span class="token punctuation">,</span> <span class="token number">0x2</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">tostr</span><span class="token punctuation">(</span>score<span class="token punctuation">,</span> <span class="token number">0x2</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20250927-running-a-game-jam/">Advice on running a game jam</a></li>
 </ul>
 
 			</heading-anchors>
@@ -598,7 +605,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/20250423-affinity-strokes-look-bad/` was built on 2026-06-09T12:57:32.002Z -->
+		<!-- This page `/blog/20250609-big-numbers-in-pico-8/` was built on 2026-06-09T12:57:32.003Z -->
 		
 	</body>
 </html>
