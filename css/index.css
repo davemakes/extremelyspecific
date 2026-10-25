@@ -20,7 +20,7 @@
 	--syntax-tab-size: 2;
 }
 
-.function 
+.function
 	color:--code-function-color;}
 }
 
@@ -87,13 +87,18 @@ p:last-child {
 p {
 	line-height: var(--font-line-height);
 }
-p code {
+p code, li code {
 	background: var(--color-gray-20);
 	padding:0 3px;
 }
 
 li {
 	line-height: var(--font-line-height);
+}
+
+ol li::marker {
+	color: var(--color-gray-50);
+	font-weight: bold;
 }
 
 a[href] {

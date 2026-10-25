@@ -290,7 +290,7 @@ pre[class*="language-diff-"] {
 	--syntax-tab-size: 2;
 }
 
-.function 
+.function
 	color:--code-function-color;}
 }
 
@@ -357,13 +357,18 @@ p:last-child {
 p {
 	line-height: var(--font-line-height);
 }
-p code {
+p code, li code {
 	background: var(--color-gray-20);
 	padding:0 3px;
 }
 
 li {
 	line-height: var(--font-line-height);
+}
+
+ol li::marker {
+	color: var(--color-gray-50);
+	font-weight: bold;
 }
 
 a[href] {
@@ -595,17 +600,17 @@ score <span class="token operator">-</span><span class="token operator">=</span>
 <pre class="language-lua" tabindex="0"><code class="language-lua">score <span class="token operator">+</span><span class="token operator">=</span> <span class="token function">tonum</span><span class="token punctuation">(</span><span class="token string">"1000000"</span><span class="token punctuation">,</span> <span class="token number">0x2</span><span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span><span class="token function">tostr</span><span class="token punctuation">(</span>score<span class="token punctuation">,</span> <span class="token number">0x2</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20250927-running-a-game-jam/">Advice on running a game jam</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20250927-running-a-game-jam/">Advice on running a game jam</a></li><li class="links-nextprev-next">Next →<br><a href="/extremelyspecific/blog/20261025-disable-essential-space-button-on-nothing-phone/">Disable the Essential Space button on Nothing Phones</a></li>
 </ul>
 
 			</heading-anchors>
 		</main>
 
 		<footer>
-			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+			<p>A blog by <a href="https://www.davemakes.com">davemakes</a></p>
 		</footer>
 
-		<!-- This page `/blog/20250609-big-numbers-in-pico-8/` was built on 2026-06-09T12:57:32.003Z -->
+		<!-- This page `/blog/20250609-big-numbers-in-pico-8/` was built on 2026-10-25T03:03:40.962Z -->
 		
 	</body>
 </html>

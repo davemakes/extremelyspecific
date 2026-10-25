@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Advice on running a game jam</title>
-		<meta name="description" content="Things I learned from hosting Falling Block Jam">
+		<title>Disable the Essential Space button on Nothing Phones</title>
+		<meta name="description" content="Nothing phones come with an annoying AI button. You can use termux to disable it.">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Extremely Specific">
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -290,7 +290,7 @@ pre[class*="language-diff-"] {
 	--syntax-tab-size: 2;
 }
 
-.function 
+.function
 	color:--code-function-color;}
 }
 
@@ -357,13 +357,18 @@ p:last-child {
 p {
 	line-height: var(--font-line-height);
 }
-p code {
+p code, li code {
 	background: var(--color-gray-20);
 	padding:0 3px;
 }
 
 li {
 	line-height: var(--font-line-height);
+}
+
+ol li::marker {
+	color: var(--color-gray-50);
+	font-weight: bold;
 }
 
 a[href] {
@@ -395,6 +400,14 @@ header:after {
 	clear: both;
 }
 
+blockquote {
+	border-left: 4px solid var(--color-gray-50);
+	background-color: var(--color-gray-20);
+	margin: 0;
+	padding: 1em 2em;
+	font-style: italic;
+}
+
 .links-nextprev {
 	display: flex;
 	justify-content: space-between;
@@ -421,6 +434,7 @@ table th {
 pre,
 code {
 	font-family: var(--font-family-monospace);
+	max-width:100%;
 }
 pre:not([class*="language-"]) {
 	margin: .5em 0;
@@ -482,7 +496,6 @@ header {
 .postlist {
 	list-style: none;
 	padding: 0;
-	padding-left: 1.5rem;
 }
 .postlist-item {
 	display: flex;
@@ -490,14 +503,6 @@ header {
 	align-items: baseline;
 	counter-increment: start-from -1;
 	margin-bottom: 1em;
-}
-.postlist-item:before {
-	display: inline-block;
-	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
-	line-height: 100%;
-	text-align: right;
-	margin-left: -1.5rem;
 }
 .postlist-date,
 .postlist-item:before {
@@ -511,7 +516,6 @@ header {
 	font-size: 1.1875em; /* 19px /16 */
 	font-weight: 700;
 	flex-basis: calc(100% - 1.5rem);
-	padding-left: .25em;
 	padding-right: .5em;
 	text-underline-position: from-font;
 	text-underline-offset: 0;
@@ -543,6 +547,11 @@ header {
 }
 .post-metadata time {
 	margin-right: 1em;
+}
+
+.link-badges {
+	display:flex;
+	align-content: space-between;
 }</style>
 
 	</head>
@@ -565,26 +574,69 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1>Advice on running a game jam</h1>
+<h1>Disable the Essential Space button on Nothing Phones</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2025-09-27">27 September 2025</time></li>
-	<li><a href="/extremelyspecific/tags/itch/" class="post-tag">itch</a></li>
+	<li><time datetime="2026-10-25">25 October 2026</time></li>
+	<li><a href="/extremelyspecific/tags/smartphone/" class="post-tag">smartphone</a></li>
 </ul>
 
-<p>This month, I ran a game jam on Itch.io called Falling Block Jam. I expected a few friends to join, but</p>
+<h2>The Problem</h2>
+<p>The Nothing Phone 3a introduced an extra “Essential Space” button that takes screenshots and records audio to be fed into an AI memo app. It’s very easy to accidentally take lots of meaningless screenshots, or screenshots of sensitive information, and an accidental press can wind up recording private conversations to be automatically fed into an AI for transcription.</p>
+<p>There are some options to mitigate these problems, but no built-in way to completely disable the button. But we can hack it.</p>
+<h2>The Solution</h2>
+<p>This <a href="https://www.reddit.com/r/NothingTech/comments/1jv6gea/quick_guide_to_remap_the_essential_space_button/">guide from Reddit</a> is what worked for me on my Nothing Phone 3. It feels a little advanced because you have to do some terminal commands on your phone, but it’s not as scary as it sounds. I’ve reproduced the steps here with some missing details filled in.</p>
+<ol>
+<li>Install the app <a href="https://github.com/termux/termux-app">Termux</a>. It seems like the Google Play version is limited, and the best way to get it is through GitHub or <a href="https://f-droid.org/en/packages/com.termux/">F-Droid</a></li>
+<li>In Termux, run the command <code>pkg install android-tools</code></li>
+<li>Enable Developer Options:
+<ul>
+<li>Open your settings app</li>
+<li>Scroll to the bottom and tap About Phone</li>
+<li>Find the “Build number” info. On my Android 17 phone, I have to tap on “Android version” under “Device Details” to reveal it</li>
+<li>Tap on “Build number” 7 times and enter your password or PIN when prompted.</li>
+</ul>
+</li>
+<li>In Settings &gt; System &gt; Developer Options, under “Debugging” do:
+<ul>
+<li>Enable USB debugging</li>
+<li>Enable Wireless debugging</li>
+<li>Tap on Wireless debugging</li>
+<li>Tap “Pair device with pairing code”</li>
+<li>Take a note of the Wi-Fi pairing code</li>
+<li>Take a note of the 5 digit number at the end of the IP address &amp; port</li>
+</ul>
+</li>
+<li>In Termux, run the command <code>adb pair localhost:PORT</code> where PORT is that 5 digit number</li>
+<li>Enter the Wi-Fi pairing code when prompted</li>
+<li>Close the device pairing screen and note the 5 digit port number displayed on the main Wireless Debugging display.</li>
+<li>In Termux, run the command <code>adb connect localhost:PORT</code> where PORT is that new 5 digit number</li>
+<li>You should be connected now. Run the following commands in Termux:</li>
+</ol>
+<pre class="language-sh" tabindex="0"><code class="language-sh">adb shell pm disable-user <span class="token parameter variable">--user</span> <span class="token number">0</span> com.nothing.ntessentialspace
+adb shell pm disable-user <span class="token parameter variable">--user</span> <span class="token number">0</span> com.nothing.ntessentialrecorder</code></pre>
+<ol start="10">
+<li>Back in settings, disable USB debugging and Wireless debugging. Close Termux.</li>
+</ol>
+<p>And that’s it! Now the Nothing Phone’s extra button truly does nothing.</p>
+<h2>Optional Steps</h2>
+<p>I haven’t tried these, but apparently you can remap the button using an app called KeyMapper from the Google Play store.</p>
+<p>If you want to re-enable the Essential Space button, in Termux use these commands:</p>
+<pre class="language-sh" tabindex="0"><code class="language-sh">adb devices
+adb shell pm <span class="token builtin class-name">enable</span> <span class="token parameter variable">--user</span> <span class="token number">0</span> com.nothing.ntessentialspace
+adb shell pm <span class="token builtin class-name">enable</span> <span class="token parameter variable">--user</span> <span class="token number">0</span> com.nothing.ntessentialrecorder</code></pre>
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20250423-affinity-strokes-look-bad/">Affinity Photo and Designer outer and inner strokes on vector objects allow background and fill to bleed through</a></li><li class="links-nextprev-next">Next →<br><a href="/extremelyspecific/blog/20250927-running-a-game-jam/"></a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20250609-big-numbers-in-pico-8/">Big numbers in Pico-8</a></li>
 </ul>
 
 			</heading-anchors>
 		</main>
 
 		<footer>
-			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+			<p>A blog by <a href="https://www.davemakes.com">davemakes</a></p>
 		</footer>
 
-		<!-- This page `/blog/20250927-tmp/` was built on 2025-09-27T00:27:06.126Z -->
+		<!-- This page `/blog/20261025-disable-essential-space-button-on-nothing-phone/` was built on 2026-10-25T03:03:40.963Z -->
 		
 	</body>
 </html>

@@ -34,7 +34,7 @@
 	--syntax-tab-size: 2;
 }
 
-.function 
+.function
 	color:--code-function-color;}
 }
 
@@ -101,13 +101,18 @@ p:last-child {
 p {
 	line-height: var(--font-line-height);
 }
-p code {
+p code, li code {
 	background: var(--color-gray-20);
 	padding:0 3px;
 }
 
 li {
 	line-height: var(--font-line-height);
+}
+
+ol li::marker {
+	color: var(--color-gray-50);
+	font-weight: bold;
 }
 
 a[href] {
@@ -331,6 +336,9 @@ header {
 	<li><a href="/extremelyspecific/tags/gamedev/" class="post-tag">gamedev</a></li>
 
 	
+	<li><a href="/extremelyspecific/tags/programming/" class="post-tag">programming</a></li>
+
+	
 	<li><a href="/extremelyspecific/tags/guitar/" class="post-tag">guitar</a></li>
 
 	
@@ -348,6 +356,9 @@ header {
 	
 	<li><a href="/extremelyspecific/tags/long/" class="post-tag">long</a></li>
 
+	
+	<li><a href="/extremelyspecific/tags/smartphone/" class="post-tag">smartphone</a></li>
+
 </ul>
 
 
@@ -355,10 +366,10 @@ header {
 		</main>
 
 		<footer>
-			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+			<p>A blog by <a href="https://www.davemakes.com">davemakes</a></p>
 		</footer>
 
-		<!-- This page `/tags/` was built on 2026-06-09T12:57:32.004Z -->
+		<!-- This page `/tags/` was built on 2026-10-25T03:03:40.963Z -->
 		
 	</body>
 </html>

@@ -5,11 +5,62 @@
   <subtitle>Documenting extremely specific problems I&#39;ve encountered along with their solutions.</subtitle>
   <link href="https://davemakes.com/extremelyspecific/feed/feed.xml" rel="self" />
   <link href="https://davemakes.com/extremelyspecific/extremelyspecific" />
-  <updated>2026-06-09T00:00:00Z</updated>
+  <updated>2026-10-25T00:00:00Z</updated>
   <id>https://davemakes.com/extremelyspecific/extremelyspecific</id>
   <author>
     <name>davemakes</name>
   </author>
+  <entry>
+    <title>Disable the Essential Space button on Nothing Phones</title>
+    <link href="https://davemakes.com/extremelyspecific/blog/20261025-disable-essential-space-button-on-nothing-phone/" />
+    <updated>2026-10-25T00:00:00Z</updated>
+    <id>https://davemakes.com/extremelyspecific/blog/20261025-disable-essential-space-button-on-nothing-phone/</id>
+    <content type="html">&lt;h2&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;The Nothing Phone 3a introduced an extra “Essential Space” button that takes screenshots and records audio to be fed into an AI memo app. It’s very easy to accidentally take lots of meaningless screenshots, or screenshots of sensitive information, and an accidental press can wind up recording private conversations to be automatically fed into an AI for transcription.&lt;/p&gt;
+&lt;p&gt;There are some options to mitigate these problems, but no built-in way to completely disable the button. But we can hack it.&lt;/p&gt;
+&lt;h2&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;This &lt;a href=&quot;https://www.reddit.com/r/NothingTech/comments/1jv6gea/quick_guide_to_remap_the_essential_space_button/&quot;&gt;guide from Reddit&lt;/a&gt; is what worked for me on my Nothing Phone 3. It feels a little advanced because you have to do some terminal commands on your phone, but it’s not as scary as it sounds. I’ve reproduced the steps here with some missing details filled in.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install the app &lt;a href=&quot;https://github.com/termux/termux-app&quot;&gt;Termux&lt;/a&gt;. It seems like the Google Play version is limited, and the best way to get it is through GitHub or &lt;a href=&quot;https://f-droid.org/en/packages/com.termux/&quot;&gt;F-Droid&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;In Termux, run the command &lt;code&gt;pkg install android-tools&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Enable Developer Options:
+&lt;ul&gt;
+&lt;li&gt;Open your settings app&lt;/li&gt;
+&lt;li&gt;Scroll to the bottom and tap About Phone&lt;/li&gt;
+&lt;li&gt;Find the “Build number” info. On my Android 17 phone, I have to tap on “Android version” under “Device Details” to reveal it&lt;/li&gt;
+&lt;li&gt;Tap on “Build number” 7 times and enter your password or PIN when prompted.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;In Settings &amp;gt; System &amp;gt; Developer Options, under “Debugging” do:
+&lt;ul&gt;
+&lt;li&gt;Enable USB debugging&lt;/li&gt;
+&lt;li&gt;Enable Wireless debugging&lt;/li&gt;
+&lt;li&gt;Tap on Wireless debugging&lt;/li&gt;
+&lt;li&gt;Tap “Pair device with pairing code”&lt;/li&gt;
+&lt;li&gt;Take a note of the Wi-Fi pairing code&lt;/li&gt;
+&lt;li&gt;Take a note of the 5 digit number at the end of the IP address &amp;amp; port&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;In Termux, run the command &lt;code&gt;adb pair localhost:PORT&lt;/code&gt; where PORT is that 5 digit number&lt;/li&gt;
+&lt;li&gt;Enter the Wi-Fi pairing code when prompted&lt;/li&gt;
+&lt;li&gt;Close the device pairing screen and note the 5 digit port number displayed on the main Wireless Debugging display.&lt;/li&gt;
+&lt;li&gt;In Termux, run the command &lt;code&gt;adb connect localhost:PORT&lt;/code&gt; where PORT is that new 5 digit number&lt;/li&gt;
+&lt;li&gt;You should be connected now. Run the following commands in Termux:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;language-sh&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;adb shell pm disable-user &lt;span class=&quot;token parameter variable&quot;&gt;--user&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; com.nothing.ntessentialspace
+adb shell pm disable-user &lt;span class=&quot;token parameter variable&quot;&gt;--user&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; com.nothing.ntessentialrecorder&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;10&quot;&gt;
+&lt;li&gt;Back in settings, disable USB debugging and Wireless debugging. Close Termux.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And that’s it! Now the Nothing Phone’s extra button truly does nothing.&lt;/p&gt;
+&lt;h2&gt;Optional Steps&lt;/h2&gt;
+&lt;p&gt;I haven’t tried these, but apparently you can remap the button using an app called KeyMapper from the Google Play store.&lt;/p&gt;
+&lt;p&gt;If you want to re-enable the Essential Space button, in Termux use these commands:&lt;/p&gt;
+&lt;pre class=&quot;language-sh&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;adb devices
+adb shell pm &lt;span class=&quot;token builtin class-name&quot;&gt;enable&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--user&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; com.nothing.ntessentialspace
+adb shell pm &lt;span class=&quot;token builtin class-name&quot;&gt;enable&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--user&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; com.nothing.ntessentialrecorder&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
   <entry>
     <title>Big numbers in Pico-8</title>
     <link href="https://davemakes.com/extremelyspecific/blog/20250609-big-numbers-in-pico-8/" />
