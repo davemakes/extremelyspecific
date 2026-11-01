@@ -594,10 +594,11 @@ header {
 <pre class="language-toml" tabindex="0"><code class="language-toml"><span class="token punctuation">[</span>Desktop Entry<span class="token punctuation">]</span>
 <span class="token key property">Type</span><span class="token punctuation">=</span>Application
 <span class="token key property">Name</span><span class="token punctuation">=</span>Gram
-<span class="token key property">Exec</span><span class="token punctuation">=</span>~/Apps/gram<span class="token punctuation">.</span>app/bin/gram
-<span class="token key property">Icon</span><span class="token punctuation">=</span>~/Apps/gram<span class="token punctuation">.</span>app/share/icons/hicolor/scalable/apps/app<span class="token punctuation">.</span>liten<span class="token punctuation">.</span>Gram<span class="token punctuation">.</span>svg
+<span class="token key property">Exec</span><span class="token punctuation">=</span>/home/username/Apps/gram<span class="token punctuation">.</span>app/bin/gram
+<span class="token key property">Icon</span><span class="token punctuation">=</span>/home/username/Apps/gram<span class="token punctuation">.</span>app/share/icons/hicolor/scalable/apps/app<span class="token punctuation">.</span>liten<span class="token punctuation">.</span>Gram<span class="token punctuation">.</span>svg
 <span class="token key property">Terminal</span><span class="token punctuation">=</span><span class="token boolean">false</span>
 <span class="token key property">Categories</span><span class="token punctuation">=</span>Development;</code></pre>
+<p>Important note: You have to specify your actual user directory instead of using the convenient <code>~/Apps</code> or even <code>$HOME/Apps</code> in this file because nothing is ever easy in Linux.</p>
 <p>I’m aware of other fields these files can contain, but I’m not familiar with where .desktop files are documented or any convenient tools to create them. You will find no shortage of Linux guys online making excuses for how stupid this is.</p>
 <p>Even though the information in this file is enough to show the app with its icon in the application launcher, once it launches, the OS forgets where the icon is unless you’ve named the .desktop file according to its obscure preferences.</p>
 <h2>What didn’t work for me</h2>
@@ -613,7 +614,7 @@ header {
 			<p>A blog by <a href="https://www.davemakes.com">davemakes</a></p>
 		</footer>
 
-		<!-- This page `/blog/20261101-w-icon-on-linux-app/` was built on 2026-11-01T06:29:36.004Z -->
+		<!-- This page `/blog/20261101-w-icon-on-linux-app/` was built on 2026-11-01T07:20:41.363Z -->
 		
 	</body>
 </html>
