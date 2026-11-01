@@ -5,11 +5,39 @@
   <subtitle>Documenting extremely specific problems I&#39;ve encountered along with their solutions.</subtitle>
   <link href="https://davemakes.com/extremelyspecific/feed/feed.xml" rel="self" />
   <link href="https://davemakes.com/extremelyspecific/extremelyspecific" />
-  <updated>2026-10-25T00:00:00Z</updated>
+  <updated>2026-11-01T00:00:00Z</updated>
   <id>https://davemakes.com/extremelyspecific/extremelyspecific</id>
   <author>
     <name>davemakes</name>
   </author>
+  <entry>
+    <title>Linux apps show a yellow W icon on the taskbar</title>
+    <link href="https://davemakes.com/extremelyspecific/blog/20261101-w-icon-on-linux-app/" />
+    <updated>2026-11-01T00:00:00Z</updated>
+    <id>https://davemakes.com/extremelyspecific/blog/20261101-w-icon-on-linux-app/</id>
+    <content type="html">&lt;h2&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;I have been trying out desktop Linux (specifically Fedora with KDE Plasma), but occasionally I want to use an app that isn’t available through a package manager, and its icon on the taskbar is an ugly yellow circle with the letter W in it.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/blog/20261101-w-icon-on-linux-app/wayland_icon.webp&quot; alt=&quot;Wayland icon&quot;&gt;&lt;/p&gt;
+&lt;h2&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;The app is displaying the default Wayland icon because the OS is picky about the exact name of the &lt;code&gt;.desktop&lt;/code&gt; file. In my case, I had named it &lt;code&gt;gram.desktop&lt;/code&gt;, but it needed to match the application’s exact package name, &lt;code&gt;app.liten.Gram.desktop&lt;/code&gt;. You can find this a number of ways, but I found it by right-clicking the top of the window and going to &lt;code&gt;More Actions &amp;gt; Configure Special Application Settings&lt;/code&gt;, and copying the text in the field marked &lt;code&gt;Window class (application)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/blog/20261101-w-icon-on-linux-app/gram_icon.webp&quot; alt=&quot;Gram editor icon&quot;&gt;&lt;/p&gt;
+&lt;h2&gt;How I arrived at this problem&lt;/h2&gt;
+&lt;p&gt;I was trying to install a code editor called &lt;a href=&quot;https://gram-editor.com/&quot;&gt;Gram&lt;/a&gt;, which isn’t available through Fedora’s default package manager. There is a Linux binary, which is a bunch of files in a folder.&lt;/p&gt;
+&lt;p&gt;A natural thing you’d want to do with a desktop application on your computer is to put it in your application menu and pin it to the taskbar. Even with a relatively polished desktop environment like KDE Plasma, this is unreasonably, obnoxiously unintuitive.&lt;/p&gt;
+&lt;p&gt;First, you need a place for the application to live after you’ve downloaded it. I chose to make a directory under &lt;code&gt;~/Apps/&lt;/code&gt;. Then, you need a .desktop file. My .desktop file looks like this:&lt;/p&gt;
+&lt;pre class=&quot;language-toml&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-toml&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;Desktop Entry&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token key property&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;Application
+&lt;span class=&quot;token key property&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;Gram
+&lt;span class=&quot;token key property&quot;&gt;Exec&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;~/Apps/gram&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;app/bin/gram
+&lt;span class=&quot;token key property&quot;&gt;Icon&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;~/Apps/gram&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;app/share/icons/hicolor/scalable/apps/app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;liten&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Gram&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;svg
+&lt;span class=&quot;token key property&quot;&gt;Terminal&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;token key property&quot;&gt;Categories&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;Development;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I’m aware of other fields these files can contain, but I’m not familiar with where .desktop files are documented or any convenient tools to create them. You will find no shortage of Linux guys online making excuses for how stupid this is.&lt;/p&gt;
+&lt;p&gt;Even though the information in this file is enough to show the app with its icon in the application launcher, once it launches, the OS forgets where the icon is unless you’ve named the .desktop file according to its obscure preferences.&lt;/p&gt;
+&lt;h2&gt;What didn’t work for me&lt;/h2&gt;
+&lt;p&gt;I saw advice to set the icon under “Special Window Settings” or “Application Rules” using a “desktop file name” property, but that didn’t work for me. The application would start with the correct icon, and immediately swap back to the Wayland icon.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Disable the Essential Space button on Nothing Phones</title>
     <link href="https://davemakes.com/extremelyspecific/blog/20261025-disable-essential-space-button-on-nothing-phone/" />
@@ -90,7 +118,7 @@ score &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=
     <link href="https://davemakes.com/extremelyspecific/blog/20250927-running-a-game-jam/" />
     <updated>2025-09-27T00:00:00Z</updated>
     <id>https://davemakes.com/extremelyspecific/blog/20250927-running-a-game-jam/</id>
-    <content type="html">&lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/assets/falling-block-jam.webp&quot; alt=&quot;Falling Block Jam page on Itch.io&quot;&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/blog/20250927-running-a-game-jam/falling-block-jam.webp&quot; alt=&quot;Falling Block Jam page on Itch.io&quot;&gt;&lt;/p&gt;
 &lt;h2&gt;Falling Block Jam&lt;/h2&gt;
 &lt;p&gt;This month, I ran a game jam on Itch.io called &lt;a href=&quot;https://itch.io/jam/falling-block-jam&quot;&gt;Falling Block Jam&lt;/a&gt;. I expected a few friends to join, but unexpectedly over 1200 people signed up and the event was one of Itch’s top featured jams of September.&lt;/p&gt;
 &lt;p&gt;I had never hosted an online jam of this size before and I was not prepared for some of the issues and conflicts that resulted from so much attention. There is plenty of advice out there for how to participate in a jam, but not a lot on how to run one, so I’m documenting the things I learned for my future self and anyone else who wants to run a game jam.&lt;/p&gt;
@@ -185,14 +213,14 @@ score &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=
     <id>https://davemakes.com/extremelyspecific/blog/20250423-affinity-strokes-look-bad/</id>
     <content type="html">&lt;h2&gt;The Problem&lt;/h2&gt;
 &lt;p&gt;In Affinity Photo and Designer (both versions 1 and 2), when you apply an outer or inner stroke to a circle, a rounded rectangle, or any vector object that isn’t a level rectangle, bits of the background or fill will show through.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/assets/affinity-circles/affinity-bad-circles.webp&quot; alt=&quot;Poor rendering of inner and outer strokes in Affinity Photo 2&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/blog/20250423-affinity-strokes-look-bad/affinity-bad-circles.webp&quot; alt=&quot;Poor rendering of inner and outer strokes in Affinity Photo 2&quot;&gt;&lt;/p&gt;
 &lt;p&gt;This happens because the program is drawing the edges of the two vector elements right next to each other and then rendering/anti-aliasing them in what I would call a naive way. Other applications like Figma will compensate for this issue by silently expanding and contracting the fill geometry under the hood to avoid these ugly artifacts.&lt;/p&gt;
 &lt;p&gt;Unfortunately, this has been a known issue with Affinity software for nearly a decade, and I don’t believe they will ever fix it.&lt;/p&gt;
 &lt;h2&gt;The Hack&lt;/h2&gt;
 &lt;p&gt;Inner and outer strokes render poorly, but under the Layer Effects menu, the outline effect can be aligned to the outside or inside and looks good.&lt;/p&gt;
 &lt;p&gt;It’s harder to edit because you have to open up a large pop-up panel that can’t be docked in order to edit the size or color of an outline, but at least it renders properly.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/assets/affinity-circles/affinity-good-circles.webp&quot; alt=&quot;Good rendering of inner and outer outlines in Affinity Photo 2&quot;&gt;
-&lt;img src=&quot;https://davemakes.com/extremelyspecific/assets/affinity-circles/affinity-layer-effects.webp&quot; alt=&quot;Outlines in the layer effects panel of Affinity Photo 2&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/blog/20250423-affinity-strokes-look-bad/affinity-good-circles.webp&quot; alt=&quot;Good rendering of inner and outer outlines in Affinity Photo 2&quot;&gt;
+&lt;img src=&quot;https://davemakes.com/extremelyspecific/blog/20250423-affinity-strokes-look-bad/affinity-layer-effects.webp&quot; alt=&quot;Outlines in the layer effects panel of Affinity Photo 2&quot;&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
