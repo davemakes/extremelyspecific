@@ -37,6 +37,17 @@
 &lt;p&gt;Even though the information in this file is enough to show the app with its icon in the application launcher, once it launches, the OS forgets where the icon is unless you’ve named the .desktop file according to its obscure preferences.&lt;/p&gt;
 &lt;h2&gt;What didn’t work for me&lt;/h2&gt;
 &lt;p&gt;I saw advice to set the icon under “Special Window Settings” or “Application Rules” using a “desktop file name” property, but that didn’t work for me. The application would start with the correct icon, and immediately swap back to the Wayland icon.&lt;/p&gt;
+&lt;h2&gt;A different solution&lt;/h2&gt;
+&lt;p&gt;In the case of Gram, you can grab the flatpak version and the system seems much happier figuring out its icon and place in the application launcher without any futzing with .desktop files.&lt;/p&gt;
+&lt;p&gt;How did I miss the flatpak version? Unfortunately, many applications throw users into an unsorted list of confusingly named downloads with no guidance on the benefits and drawbacks of each for their system.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://davemakes.com/extremelyspecific/blog/20261101-w-icon-on-linux-app/gram-download-links.webp&quot; alt=&quot;Gram download page of 13 links&quot;&gt;&lt;/p&gt;
+&lt;p&gt;If a user on Linux were to scan the filenames of that list for the word Linux, they would miss the (likely) preferable flatpak version at the top.&lt;/p&gt;
+&lt;p&gt;That being said, since the flatpak version is sandboxed, it hides its config files inside the package instead of utilizing the more centralized &lt;code&gt;~/.config/&lt;/code&gt; directory. I wound up making some symlinks to make organizing and backing up my configs easier.&lt;/p&gt;
+&lt;p&gt;I kept the real config file where I’m used to it being and linked to it from inside the flatpak, which might be backwards from how I’m supposed to do it. I’m also told you have to issue some command to break the flatpak’s seal to get this to work, but I didn’t! And it seems to work? So like many things in Linux, this worked on my machine, but good luck on whatever your situation is.&lt;/p&gt;
+&lt;p&gt;First make a backup of the flatpak’s default config. You could also move this into your &lt;code&gt;~/.config/&lt;/code&gt; directory if you’re starting from scratch, or delete the directory if you’re confident in yourself.&lt;/p&gt;
+&lt;pre class=&quot;language-bsh&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-bsh&quot;&gt;mv ~/.var/app/app.liten.Gram/config/gram ~/.var/app/app.liten.Gram/config/_OLD&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then, symlink your existing config into the flatpak.&lt;/p&gt;
+&lt;pre class=&quot;language-bsh&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-bsh&quot;&gt;ln -s ~/.config/gram ~/.var/app/app.liten.Gram/config/gram&lt;/code&gt;&lt;/pre&gt;
 </content>
   </entry>
   <entry>

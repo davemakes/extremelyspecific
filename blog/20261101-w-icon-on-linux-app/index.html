@@ -603,6 +603,17 @@ header {
 <p>Even though the information in this file is enough to show the app with its icon in the application launcher, once it launches, the OS forgets where the icon is unless you’ve named the .desktop file according to its obscure preferences.</p>
 <h2>What didn’t work for me</h2>
 <p>I saw advice to set the icon under “Special Window Settings” or “Application Rules” using a “desktop file name” property, but that didn’t work for me. The application would start with the correct icon, and immediately swap back to the Wayland icon.</p>
+<h2>A different solution</h2>
+<p>In the case of Gram, you can grab the flatpak version and the system seems much happier figuring out its icon and place in the application launcher without any futzing with .desktop files.</p>
+<p>How did I miss the flatpak version? Unfortunately, many applications throw users into an unsorted list of confusingly named downloads with no guidance on the benefits and drawbacks of each for their system.</p>
+<p><img src="gram-download-links.webp" alt="Gram download page of 13 links"></p>
+<p>If a user on Linux were to scan the filenames of that list for the word Linux, they would miss the (likely) preferable flatpak version at the top.</p>
+<p>That being said, since the flatpak version is sandboxed, it hides its config files inside the package instead of utilizing the more centralized <code>~/.config/</code> directory. I wound up making some symlinks to make organizing and backing up my configs easier.</p>
+<p>I kept the real config file where I’m used to it being and linked to it from inside the flatpak, which might be backwards from how I’m supposed to do it. I’m also told you have to issue some command to break the flatpak’s seal to get this to work, but I didn’t! And it seems to work? So like many things in Linux, this worked on my machine, but good luck on whatever your situation is.</p>
+<p>First make a backup of the flatpak’s default config. You could also move this into your <code>~/.config/</code> directory if you’re starting from scratch, or delete the directory if you’re confident in yourself.</p>
+<pre class="language-bsh" tabindex="0"><code class="language-bsh">mv ~/.var/app/app.liten.Gram/config/gram ~/.var/app/app.liten.Gram/config/_OLD</code></pre>
+<p>Then, symlink your existing config into the flatpak.</p>
+<pre class="language-bsh" tabindex="0"><code class="language-bsh">ln -s ~/.config/gram ~/.var/app/app.liten.Gram/config/gram</code></pre>
 
 <ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/extremelyspecific/blog/20261025-disable-essential-space-button-on-nothing-phone/">Disable the Essential Space button on Nothing Phones</a></li>
 </ul>
@@ -614,7 +625,7 @@ header {
 			<p>A blog by <a href="https://www.davemakes.com">davemakes</a></p>
 		</footer>
 
-		<!-- This page `/blog/20261101-w-icon-on-linux-app/` was built on 2026-11-01T07:20:41.363Z -->
+		<!-- This page `/blog/20261101-w-icon-on-linux-app/` was built on 2026-11-06T22:57:18.061Z -->
 		
 	</body>
 </html>
